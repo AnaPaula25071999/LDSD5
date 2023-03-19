@@ -27,6 +27,15 @@ namespace CadernoDigital.Controllers
         {
             return View();
         }
+        public IActionResult CreatePublish()
+        {
+            return View();
+        }
+
+        public IActionResult HomeController.publish()
+        {
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
