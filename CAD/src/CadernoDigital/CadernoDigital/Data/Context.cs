@@ -14,6 +14,7 @@ namespace CadernoDigital.Data
         {
         }
         public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<PublicacaoModel> Publicacao { get; set; }
 
     }
 }
