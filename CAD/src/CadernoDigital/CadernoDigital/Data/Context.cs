@@ -13,8 +13,8 @@ namespace CadernoDigital.Data
             : base(options)
         {
         }
-
-        public DbSet<Login> Login { get; set; }
+        public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<PublicacaoModel> Publicacao { get; set; }
 
     }
 }
