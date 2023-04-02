@@ -37,6 +37,7 @@ namespace CadernoDigital
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddScoped<Criptografia>();
             services.AddScoped<ISessao, Sessao>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IPublicacaoService, PublicacaoService>();

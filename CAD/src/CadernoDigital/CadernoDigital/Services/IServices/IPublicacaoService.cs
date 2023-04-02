@@ -8,6 +8,13 @@ namespace CadernoDigital.Services.IServices
 {
     public interface IPublicacaoService
     {
+        List<PublicacaoModel> BucarTodos();
+
+        PublicacaoModel BuscarPorID(Guid id);
+
         PublicacaoModel Adicionar(PublicacaoModel publicacao);
+
+        PublicacaoModel Atualizar(PublicacaoModel publicacao);
+
     }
 }

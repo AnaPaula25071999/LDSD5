@@ -1,0 +1,29 @@
+﻿@model PublicacaoModel
+@{
+    ViewData["Title"] = "Editar Publicação";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Editar Publicação</h1>
+</div>
+
+
+<form asp-controller="Home" asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="conteudoTexto" class="form-label">Conteudo da publicação</label>
+        <input type="text" asp-for="ConteudoTexto" class="form-control" placeholder="Digite sua Publicação">
+        @Html.ValidationMessageFor(x => x.ConteudoTexto)
+    </div>
+
+    <div class="form-group">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite seu nome">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+    <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
+
+</form>

@@ -1,23 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<PublicacaoModel>
+
+@{
+    ViewData["Title"] = "Publicações";
 }
 
-<div class="container-fluid">
-    <div style="height: 80vh;" class="row">
-        <div class="col-3 d-flex justify-content-center align-items-center">
-            <div>
-                Título
-            </div>
-        </div>
-        <div class="col-6 d-flex justify-content-center align-items-center">
-            <div>
-                Publicação
-            </div>
-        </div>
-        <div class="col-3 d-flex justify-content-center align-items-center">
-            <div>
-                Comentários
-            </div>
-        </div>
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Criar" role="button">Adicionar nova publicação</a>
     </div>
+
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Publicações</h1>
+
+    <table id="table-publicacoes" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Texto</th>
+                <th scope="col">Autor</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var i = 0;
+                foreach (var publucacao in Model)
+                {
+                    i++;
+            <tr>
+                <th scope="row">@i</th>
+                <td>@publucacao.ConteudoTexto</td>
+                <td>@publucacao.Nome</td>
+                <td>@publucacao.DataCadastro</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" asp-action="Editar" asp-controller="Home" asp-route-id="@publucacao.Id" class="btn btn-primary">Editar</a>
+                        <a role="button" asp-action="Apagar" asp-controller="Home" asp-route-id="@publucacao.Id" class="btn btn-danger">Apagar</a>
+                    </div>
+                </td>
+            </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhuma publicação encontrada</td></tr>
+            }
+        </tbody>
+    </table>
+
 </div>
