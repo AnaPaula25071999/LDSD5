@@ -38,7 +38,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Texto</th>
                 <th scope="col">Autor</th>
-                <th scope="col"></th>
+                <th scope="col">Data Cadastro</th>
             </tr>
         </thead>
         <tbody>
@@ -48,18 +48,18 @@
                 foreach (var publucacao in Model)
                 {
                     i++;
-            <tr>
-                <th scope="row">@i</th>
-                <td>@publucacao.ConteudoTexto</td>
-                <td>@publucacao.Nome</td>
-                <td>@publucacao.DataCadastro</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" asp-action="Editar" asp-controller="Home" asp-route-id="@publucacao.Id" class="btn btn-primary">Editar</a>
-                        <a role="button" asp-action="Apagar" asp-controller="Home" asp-route-id="@publucacao.Id" class="btn btn-danger">Apagar</a>
-                    </div>
-                </td>
-            </tr>
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@publucacao.Conteudo</td>
+                        @*<td>@publucacao.Usuario.Nome</td*@>
+                        <td>@publucacao.DataCadastro</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" asp-action="Editar" asp-controller="Home" asp-route-id="@publucacao.Id" class="btn btn-primary">Editar</a>
+                                <a role="button" asp-action="Apagar" asp-controller="Home" asp-route-id="@publucacao.Id" class="btn btn-danger">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
                 }
             }
             else

@@ -1,14 +1,16 @@
 ﻿using CadernoDigital.Models;
+using CadernoDigital.Models.ViewModels;
 using CadernoDigital.Services;
 using CadernoDigital.Services.IServices;
 using ControleDeContatos.Helper;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace CadernoDigital.Controllers
 {
@@ -17,12 +19,15 @@ namespace CadernoDigital.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ISessao _sessao;
         private readonly IPublicacaoService _publicacaoService;
+        private string _caminhoImagem;
 
-        public HomeController(ILogger<HomeController> logger, ISessao sessao, IPublicacaoService publicacaoService)
+        public HomeController(ILogger<HomeController> logger, ISessao sessao, IPublicacaoService publicacaoService,
+            IWebHostEnvironment caminhoImagem)
         {
             _logger = logger;
             _sessao = sessao;
             _publicacaoService = publicacaoService;
+            _caminhoImagem = caminhoImagem.WebRootPath;
         }
 
         public IActionResult Index()
@@ -43,7 +48,10 @@ namespace CadernoDigital.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            return View();
+            var disciplinas = _publicacaoService.BuscarDisciplinas();
+            var professores = _publicacaoService.BuscarProfessores();
+            var viewModel = new PublicacaoViewModel { Disciplinas = disciplinas, Professores = professores };
+            return View(viewModel);
         }
 
         public IActionResult Editar(Guid id)
@@ -53,7 +61,7 @@ namespace CadernoDigital.Controllers
         }
 
         [HttpPost]
-        public IActionResult Publicar(PublicacaoModel publicacao)
+        public IActionResult Publicar(PublicacaoViewModel pub)
         {
             if (_sessao.BuscarSessaoDoUsuario() == null)
             {
@@ -64,18 +72,32 @@ namespace CadernoDigital.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    publicacao = _publicacaoService.Adicionar(publicacao);
+
+                    _caminhoImagem += "\\assets\\imagem\\";
+                    string nomeImagem = DateTime.Now.ToString("dd-MM-yyyyTHH-mm-ss") + "_" + pub.Imagem.FileName.ToString();
+                    if (!Directory.Exists(_caminhoImagem))
+                    {
+                        Directory.CreateDirectory(_caminhoImagem);
+                    }
+                    using (var strem = System.IO.File.Create(
+                        _caminhoImagem + nomeImagem))
+                    {
+                        pub.Imagem.CopyToAsync(strem);
+                    }
+                    
+                    pub.Publicacao.Imagem = _caminhoImagem + nomeImagem;
+                    pub.Publicacao = _publicacaoService.Adicionar(pub.Publicacao);
 
                     TempData["MensagemSucesso"] = "Sucesso na publicação!";
                     return RedirectToAction("Index");
                 }
 
-                return View(publicacao);
+                return View(pub);
             }
             catch (Exception ex)
             {
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar sua publicação, tente novamante, detalhe do erro: {ex.Message}";
-                return RedirectToAction("Index");
+                return RedirectToAction("Criar");
             }
         }
 

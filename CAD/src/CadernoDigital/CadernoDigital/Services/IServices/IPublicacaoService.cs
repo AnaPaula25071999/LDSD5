@@ -16,5 +16,9 @@ namespace CadernoDigital.Services.IServices
 
         PublicacaoModel Atualizar(PublicacaoModel publicacao);
 
+        List<DisciplinaModel> BuscarDisciplinas();
+
+        List<ProfessorModel> BuscarProfessores();
+
     }
 }

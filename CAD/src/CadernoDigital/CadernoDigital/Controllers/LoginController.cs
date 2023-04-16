@@ -38,7 +38,7 @@ namespace CadernoDigital.Controllers
                 if (ModelState.IsValid)
                 {
                     loginModel.Senha = _criptitografia.Criptografa(loginModel.Senha);
-                    UsuarioModel usuario = _loginService.BuscaLogin(loginModel.Login);
+                    UsuarioModel usuario = _loginService.BuscaLogin(loginModel.Matricula);
                     if (usuario != null)
                     {
                         if (usuario.SenhaValida(loginModel.Senha))

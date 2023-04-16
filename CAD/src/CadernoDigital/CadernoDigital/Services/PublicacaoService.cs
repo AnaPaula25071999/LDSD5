@@ -33,7 +33,7 @@ namespace CadernoDigital.Services
         {
             publicacao.DataCadastro = DateTime.Now;
             publicacao.DataAtualizacao = DateTime.Now;
-            publicacao.Nome = _sessao.BuscarSessaoDoUsuario().Nome.ToString();
+            publicacao.Id_Usuario = _sessao.BuscarSessaoDoUsuario().Id;
             _context.Publicacao.Add(publicacao);
             _context.SaveChanges();
             return publicacao;
@@ -45,13 +45,23 @@ namespace CadernoDigital.Services
             PublicacaoModel publicacaoDB = BuscarPorID(publicacao.Id);
             if (publicacaoDB == null) throw new Exception("Houve um erro na atualização do publicacao!");
 
-            publicacaoDB.ConteudoTexto = publicacao.ConteudoTexto;
-            publicacaoDB.Nome = publicacao.Nome;
+            publicacaoDB.Conteudo = publicacao.Conteudo;
+            publicacaoDB.Id_Usuario = _sessao.BuscarSessaoDoUsuario().Id;
             publicacaoDB.DataAtualizacao = DateTime.Now;
             _context.Publicacao.Update(publicacaoDB);
             _context.SaveChanges();
 
             return publicacaoDB;
+        }
+
+        public List<DisciplinaModel> BuscarDisciplinas()
+        {
+            return _context.Disciplina.ToList();
+        }
+
+        public List<ProfessorModel> BuscarProfessores()
+        {
+            return _context.Professor.ToList();
         }
     }
 }

@@ -8,6 +8,6 @@ namespace CadernoDigital.Services.IServices
 {
     public interface ILoginService
     {
-        UsuarioModel BuscaLogin(string login);
+        UsuarioModel BuscaLogin(string matricula);
     }
 }

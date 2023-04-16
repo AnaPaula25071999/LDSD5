@@ -13,14 +13,8 @@
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label for="conteudoTexto" class="form-label">Conteudo da publicação</label>
-        <input type="text" asp-for="ConteudoTexto" class="form-control" placeholder="Digite sua Publicação">
-        @Html.ValidationMessageFor(x => x.ConteudoTexto)
-    </div>
-
-    <div class="form-group">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite seu nome">
-        @Html.ValidationMessageFor(x => x.Nome)
+        <input type="text" asp-for="Conteudo" class="form-control" placeholder="Digite sua Publicação">
+        @Html.ValidationMessageFor(x => x.Conteudo)
     </div>
 
     <button type="submit" class="btn btn-primary btn-block">Alterar</button>

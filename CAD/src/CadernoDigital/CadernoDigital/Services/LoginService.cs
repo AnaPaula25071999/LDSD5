@@ -18,9 +18,9 @@ namespace CadernoDigital.Services
             _context = context;
         }
 
-        public UsuarioModel BuscaLogin(string login)
+        public UsuarioModel BuscaLogin(string matricula)
         {
-            return _context.Usuario.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+            return _context.Usuario.FirstOrDefault(x => x.Matricula.ToUpper() == matricula.ToUpper());
         }
     }
 }
