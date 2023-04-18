@@ -37,9 +37,9 @@ namespace CadernoDigital.Controllers
                 return RedirectToAction("Index", "Login");
             }
 
-            List<PublicacaoModel> publicoes = _publicacaoService.BucarTodos();
+            List<PublicacaoViewModel> publicacoes = _publicacaoService.BucarTodos();
 
-            return View(publicoes);
+            return View(publicacoes);
         }
 
         public IActionResult Criar()
@@ -85,7 +85,7 @@ namespace CadernoDigital.Controllers
                         pub.Imagem.CopyToAsync(strem);
                     }
                     
-                    pub.Publicacao.Imagem = _caminhoImagem + nomeImagem;
+                    pub.Publicacao.Imagem = nomeImagem;
                     pub.Publicacao = _publicacaoService.Adicionar(pub.Publicacao);
 
                     TempData["MensagemSucesso"] = "Sucesso na publicação!";

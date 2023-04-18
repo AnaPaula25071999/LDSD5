@@ -1,4 +1,5 @@
 ﻿using CadernoDigital.Models;
+using CadernoDigital.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace CadernoDigital.Services.IServices
 {
     public interface IPublicacaoService
     {
-        List<PublicacaoModel> BucarTodos();
+        List<PublicacaoViewModel> BucarTodos();
 
         PublicacaoModel BuscarPorID(Guid id);
 

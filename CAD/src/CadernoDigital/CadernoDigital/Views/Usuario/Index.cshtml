@@ -1,7 +1,7 @@
-﻿@model List<CadernoDigital.Models.ViewModels.PublicacaoViewModel>
+﻿@model List<PublicacaoModel>
 
 @{
-    ViewData["Title"] = "Publicações";
+    ViewData["Title"] = "Minhas Publicações";
 }
 
 @if (TempData["MensagemSucesso"] != null)
@@ -35,17 +35,17 @@
             {
                 <div class="card">
                     <label>Disciplina</label>
-                    <h5 class="card-title">@publucacao.Disciplina.Nome</h5>
+                    <h5 class="card-title">@publucacao.Id_Disciplina</h5>
                     <label>Professor</label>
-                    <h5 class="card-title">@publucacao.Professor.Nome</h5>
-                    <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
+                    <h5 class="card-title">@publucacao.Id_Professor</h5>
+                    <img src="~/assets/imagem/@publucacao.Imagem" class="card-img-top" alt="publicação"
                          style="width:50%;height:50%; align-self:center;">
                     <div class="card-body">
-                        <h5 class="card-title">@publucacao.Publicacao.Titulo</h5>
-                        <p class="card-text">@publucacao.Publicacao.Conteudo</p>
+                        <h5 class="card-title">@publucacao.Titulo</h5>
+                        <p class="card-text">@publucacao.Conteudo</p>
                     </div>
-                    <p class="card-text"><h6>Data publicação:</h6>@publucacao.Publicacao.DataCadastro</p>
-                    <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.Publicacao.DataAtualizacao</p>
+                    <p class="card-text"><h6>Data publicação:</h6>@publucacao.DataCadastro</p>
+                    <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.DataAtualizacao</p>
                 </div>
 
                 <br />

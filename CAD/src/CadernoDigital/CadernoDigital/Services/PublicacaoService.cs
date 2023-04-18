@@ -1,5 +1,6 @@
 ﻿using CadernoDigital.Data;
 using CadernoDigital.Models;
+using CadernoDigital.Models.ViewModels;
 using CadernoDigital.Services.IServices;
 using ControleDeContatos.Helper;
 using System;
@@ -19,9 +20,26 @@ namespace CadernoDigital.Services
             _context = context;
             _sessao = sessao;
         }
-        public List<PublicacaoModel> BucarTodos()
+        public List<PublicacaoViewModel> BucarTodos()
         {
-            return _context.Publicacao.ToList();
+            var pub = _context.Publicacao.ToList();
+
+            List<PublicacaoViewModel> publicacao = new List<PublicacaoViewModel>();
+
+            for (var i = 0; i < pub.Count; i++)
+            {
+                var dis = _context.Disciplina.FirstOrDefault(x => x.Id == pub[i].Id_Disciplina);
+                var pro = _context.Professor.FirstOrDefault(x => x.Id == pub[i].Id_Professor);
+
+                publicacao.Add(new PublicacaoViewModel()
+                {
+                    Publicacao = pub[i],
+                    Disciplina = dis,
+                    Professor = pro
+                });
+            };
+
+            return publicacao;
         }
 
         public PublicacaoModel BuscarPorID(Guid id)

@@ -16,7 +16,7 @@ namespace CadernoDigital.Models
 
         public string Imagem { get; set; }
 
-        public string? Video { get; set; }
+        public string Video { get; set; }
 
         public int Curtida { get; set; }
 
@@ -25,6 +25,7 @@ namespace CadernoDigital.Models
         public Guid Id_Disciplina { get; set; }
 
         public Guid Id_Professor { get; set; }
+
 
     }
 }
