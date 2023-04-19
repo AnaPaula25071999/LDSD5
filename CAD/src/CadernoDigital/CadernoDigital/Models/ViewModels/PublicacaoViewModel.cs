@@ -14,6 +14,8 @@ namespace CadernoDigital.Models.ViewModels
         public ProfessorModel Professor { get; set; }
 
         public DisciplinaModel Disciplina { get; set; }
+        
+        public UsuarioModel Usuario { get; set; }
 
         public ICollection<ProfessorModel> Professores { get; set; }
 
