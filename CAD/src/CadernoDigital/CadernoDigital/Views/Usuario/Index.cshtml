@@ -1,4 +1,4 @@
-﻿@model List<PublicacaoModel>
+﻿@model List<CadernoDigital.Models.ViewModels.PublicacaoViewModel>
 
 @{
     ViewData["Title"] = "Minhas Publicações";
@@ -13,20 +13,51 @@
 }
 <br />
 
+<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Index" role="button">Tela inicial</a>
+</div>
+<br />
 <div class="text-center">
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" asp-controller="Home" asp-action="Criar" role="button">Adicionar nova publicação</a>
-    </div>
-
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-primary" asp-controller="Usuario" asp-action="Index" role="button">Meu Perfil</a>
-    </div>
-
+    @foreach (var result in Model)
+    {
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Minhas informações
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-3 card">
+                                <h5>Nome</h5>
+                                <p>@result.Usuario.Nome</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>E-mail</h5>
+                                <p>@result.Usuario.Email</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Matricula</h5>
+                                <p>@result.Usuario.Matricula</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Ultima edição perfil</h5>
+                                <p>@result.Usuario.DataAtualizacao</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    }
     <br />
 
 
-    <h1 class="display-4">Publicações</h1>
+    <h1 class="display-4">Minhas publicações</h1>
 
     <div style="width=50%;">
         @if (Model != null && Model.Any())
@@ -35,17 +66,17 @@
             {
                 <div class="card">
                     <label>Disciplina</label>
-                    <h5 class="card-title">@publucacao.Id_Disciplina</h5>
+                    <h5 class="card-title">@publucacao.Disciplina.Nome</h5>
                     <label>Professor</label>
-                    <h5 class="card-title">@publucacao.Id_Professor</h5>
-                    <img src="~/assets/imagem/@publucacao.Imagem" class="card-img-top" alt="publicação"
+                    <h5 class="card-title">@publucacao.Professor.Nome</h5>
+                    <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
                          style="width:50%;height:50%; align-self:center;">
                     <div class="card-body">
-                        <h5 class="card-title">@publucacao.Titulo</h5>
-                        <p class="card-text">@publucacao.Conteudo</p>
+                        <h5 class="card-title">@publucacao.Publicacao.Titulo</h5>
+                        <p class="card-text">@publucacao.Publicacao.Conteudo</p>
                     </div>
-                    <p class="card-text"><h6>Data publicação:</h6>@publucacao.DataCadastro</p>
-                    <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.DataAtualizacao</p>
+                    <p class="card-text"><h6>Data publicação:</h6>@publucacao.Publicacao.DataCadastro</p>
+                    <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.Publicacao.DataAtualizacao</p>
                 </div>
 
                 <br />
