@@ -1,23 +1,63 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<CadernoDigital.Models.ViewModels.PublicacaoViewModel>
+
+@{
+    ViewData["Title"] = "Publicações";
 }
 
-<div class="container-fluid">
-    <div style="height: 80vh;" class="row">
-        <div class="col-3 d-flex justify-content-center align-items-center">
-            <div>
-                Título
-            </div>
-        </div>
-        <div class="col-6 d-flex justify-content-center align-items-center">
-            <div>
-                Publicação
-            </div>
-        </div>
-        <div class="col-3 d-flex justify-content-center align-items-center">
-            <div>
-                Comentários
-            </div>
-        </div>
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+        @TempData["MensagemSucesso"]
     </div>
+}
+<br />
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Criar" role="button">Adicionar nova publicação</a>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary" asp-controller="Usuario" asp-action="Index" role="button">Meu Perfil</a>
+    </div>
+
+    <br />
+
+
+    <h1 class="display-4">Publicações</h1>
+
+    <div style="width=50%;">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var publucacao in Model)
+            {
+                <div class="card">
+                    <label>Disciplina</label>
+                    <h5 class="card-title">@publucacao.Disciplina.Nome</h5>
+                    <label>Professor</label>
+                    <h5 class="card-title">@publucacao.Professor.Nome</h5>
+                    <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
+                         style="width:50%;height:50%; align-self:center;">
+                    <div class="card-body">
+                        <h5 class="card-title">@publucacao.Publicacao.Titulo</h5>
+                        <p class="card-text">@publucacao.Publicacao.Conteudo</p>
+                    </div>
+                    <p class="card-text"><h6>Data publicação:</h6>@publucacao.Publicacao.DataCadastro</p>
+                    <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.Publicacao.DataAtualizacao</p>
+                </div>
+
+                <br />
+                <br />
+            }
+        }
+        else
+        {
+            <tr class="odd"><td valign="top" colspan="5">Nenhuma publicação encontrada</td></tr>
+        }
+    </div>
+
 </div>
+
+

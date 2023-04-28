@@ -1,4 +1,5 @@
 ﻿using CadernoDigital.Models;
+using CadernoDigital.Services;
 using CadernoDigital.Services.IServices;
 using ControleDeContatos.Helper;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,13 @@ namespace CadernoDigital.Controllers
     {
         private readonly ILoginService _loginService;
         private readonly ISessao _sessao;
+        private readonly Criptografia _criptitografia;
 
-        public LoginController(ILoginService loginService, ISessao sessao)
+        public LoginController(ILoginService loginService, ISessao sessao, Criptografia criptitografia)
         {
             _loginService = loginService;
             _sessao = sessao;
+            _criptitografia = criptitografia;
         }
 
         public IActionResult Index()
@@ -34,7 +37,8 @@ namespace CadernoDigital.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    UsuarioModel usuario = _loginService.BuscaLogin(loginModel.Login);
+                    loginModel.Senha = _criptitografia.Criptografa(loginModel.Senha);
+                    UsuarioModel usuario = _loginService.BuscaLogin(loginModel.Matricula);
                     if (usuario != null)
                     {
                         if (usuario.SenhaValida(loginModel.Senha))

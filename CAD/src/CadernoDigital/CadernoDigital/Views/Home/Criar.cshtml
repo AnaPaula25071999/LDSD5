@@ -1,0 +1,72 @@
+﻿@model CadernoDigital.Models.ViewModels.PublicacaoViewModel
+@{
+    ViewData["Title"] = "Criar Publicação";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Publicar Conteúdo</h1>
+</div>
+
+
+<form asp-controller="Home" asp-action="Publicar" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="titulo" class="form-label">Titulo</label>
+        <input type="text" asp-for="Publicacao.Titulo" class="form-control" placeholder="Digite seu titulo">
+        @Html.ValidationMessageFor(x => x.Publicacao.Titulo)
+    </div>
+
+    <div class="form-group">
+        <label for="conteudo" class="form-label">Conteudo</label>
+        <input type="text" asp-for="Publicacao.Conteudo" class="form-control" placeholder="Digite seu conteudo">
+        @Html.ValidationMessageFor(x => x.Publicacao.Conteudo)
+    </div>
+
+    <div class="form-group">
+        <label for="conteudo" class="form-label">Disciplina</label>
+        <select type="text" asp-for="Publicacao.Id_Disciplina" asp-items="@(new SelectList(Model.Disciplinas,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+        @Html.ValidationMessageFor(x => x.Publicacao.Id_Disciplina)
+    </div>
+
+    <div class="form-group">
+        <label for="conteudo" class="form-label">Professor</label>
+        <select type="text" asp-for="Publicacao.Id_Professor" asp-items="@(new SelectList(Model.Professores,"Id","Nome"))" class="form-control"><option value="">Escolha..</option></select>
+        @Html.ValidationMessageFor(x => x.Publicacao.Id_Professor)
+    </div>
+
+    <div class="form-group">
+        <label for="imagem" class="form-label">Faça upload da imagem</label>
+        <input type="file" asp-for="Imagem" accept="image/jpg, image/jpeg" class="form-control" placeholder="Selecione a imagem para upload">
+        @Html.ValidationMessageFor(x => x.Imagem)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+    <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
+
+</form>
+
+
+
+
+@*<form asp-action="publish" class="container">
+        <h1 class="d-flex mb-5 justify-content-center">
+            O que deseja publicar?
+        </h1>
+        <div class="d-flex mb-3 col-5 justify-content-center">
+            <input class="form-control" type="file" id="formFile">
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Success</button>
+    </form>*@
