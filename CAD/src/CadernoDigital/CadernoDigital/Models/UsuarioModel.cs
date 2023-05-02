@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace CadernoDigital.Models
 {
-    public class UsuarioModel
-    {
+    public class UsuarioModel : EntityModel
+    { 
 
-        public Guid Id { get; set; }  
-
-        [Required(ErrorMessage = "Digite o login do usuário")]
-        public string Login { get; set; }
+        [Required(ErrorMessage = "Digite a matricula no formato GU0000000")]
+        public string Matricula { get; set; }
 
         [Required(ErrorMessage = "Digite o nome do usuário")]
         public string Nome { get; set; }
@@ -28,8 +26,16 @@ namespace CadernoDigital.Models
         [Required(ErrorMessage = "Digite a senha do usuário")]
         public string Senha { get; set; }
 
-        public DateTime DataCadastro { get; set; }
-        public DateTime? DataAtualizacao { get; set; }
+        public string Foto { get; set; }
+
+        public string Biografia { get; set; }
+
+        public int? Celular { get; set; }
+
+        public string Genero { get; set; }
+
+        public string Curso { get; set; }
+
         public bool SenhaValida(string senha)
         {
             return Senha == senha;

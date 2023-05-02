@@ -1,0 +1,111 @@
+﻿@model List<CadernoDigital.Models.ViewModels.PublicacaoViewModel>
+
+@{
+    ViewData["Title"] = "Minhas Publicações";
+}
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+<br />
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Index" role="button">Tela inicial</a>
+</div>
+<br />
+<div class="text-center">
+
+    @foreach (var result in Model)
+    {
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Minhas informações
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row">
+                            @*<div class="col-3 card">
+                                <h5>Nome</h5>
+                                <p>@result.Usuario.Foto</p>
+                            </div>*@
+                            <div class="col-3 card">
+                                <h5>Nome</h5>
+                                <p>@result.Usuario.Nome</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>E-mail</h5>
+                                <p>@result.Usuario.Email</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Matricula</h5>
+                                <p>@result.Usuario.Matricula</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>E-mail</h5>
+                                <p>@result.Usuario.Celular</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Biografia</h5>
+                                <p>@result.Usuario.Biografia</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Genero</h5>
+                                <p>@result.Usuario.Genero</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Celular</h5>
+                                <p>@result.Usuario.Celular</p>
+                            </div>
+                            <div class="col-3 card">
+                                <h5>Ultima edição perfil</h5>
+                                <p>@result.Usuario.DataAtualizacao</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    }
+    <br />
+
+
+    <h1 class="display-4">Minhas publicações</h1>
+
+    <div style="width=50%;">
+        @foreach (var publicacao in Model)
+        {
+            if (publicacao.Publicacao != null)
+            {
+                <div class="card">
+                    <label>Disciplina</label>
+                    <h5 class="card-title">@publicacao.Disciplina.Nome</h5>
+                    <label>Professor</label>
+                    <h5 class="card-title">@publicacao.Professor.Nome</h5>
+                    <img src="~/assets/imagem/@publicacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
+                         style="width:50%;height:50%; align-self:center;">
+                    <div class="card-body">
+                        <h5 class="card-title">@publicacao.Publicacao.Titulo</h5>
+                        <p class="card-text">@publicacao.Publicacao.Conteudo</p>
+                    </div>
+                    <p class="card-text"><h6>Data publicação:</h6>@publicacao.Publicacao.DataCadastro</p>
+                    <p class="card-text"><h6>Data ultima edição:</h6>@publicacao.Publicacao.DataAtualizacao</p>
+                </div>
+
+                <br />
+                <br />
+            }
+        }
+    </div>
+
+</div>
+
+

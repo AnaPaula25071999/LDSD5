@@ -1,4 +1,4 @@
-﻿using CadernoDigital.Models;
+﻿using CadernoDigital.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CadernoDigital.Services.IServices
 {
-    public interface ILoginService
+    public interface IUsuarioService
     {
-        UsuarioModel BuscaLogin(string matricula);
+        List<PublicacaoViewModel> BucarTodos();
     }
 }
