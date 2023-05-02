@@ -26,6 +26,16 @@ namespace CadernoDigital.Models
         [Required(ErrorMessage = "Digite a senha do usuário")]
         public string Senha { get; set; }
 
+        public string Foto { get; set; }
+
+        public string Biografia { get; set; }
+
+        public int? Celular { get; set; }
+
+        public string Genero { get; set; }
+
+        public string Curso { get; set; }
+
         public bool SenhaValida(string senha)
         {
             return Senha == senha;

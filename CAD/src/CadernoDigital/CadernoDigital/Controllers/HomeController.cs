@@ -68,24 +68,13 @@ namespace CadernoDigital.Controllers
                 return RedirectToAction("Index", "Login");
             }
 
+            pub.Publicacao.Id_Disciplina_Professor = _publicacaoService.BuscarIdDisciplinaProfessor(pub.DisciplinaProfessor.Id_Disciplina, pub.DisciplinaProfessor.Id_Professor);
+
             try
             {
                 if (ModelState.IsValid)
                 {
-
-                    _caminhoImagem += "\\assets\\imagem\\";
-                    string nomeImagem = DateTime.Now.ToString("dd-MM-yyyyTHH-mm-ss") + "_" + pub.Imagem.FileName.ToString();
-                    if (!Directory.Exists(_caminhoImagem))
-                    {
-                        Directory.CreateDirectory(_caminhoImagem);
-                    }
-                    using (var strem = System.IO.File.Create(
-                        _caminhoImagem + nomeImagem))
-                    {
-                        pub.Imagem.CopyToAsync(strem);
-                    }
-                    
-                    pub.Publicacao.Imagem = nomeImagem;
+                    pub.Publicacao.Imagem = _publicacaoService.TratarUpload(pub);
                     pub.Publicacao = _publicacaoService.Adicionar(pub.Publicacao);
 
                     TempData["MensagemSucesso"] = "Sucesso na publicação!";

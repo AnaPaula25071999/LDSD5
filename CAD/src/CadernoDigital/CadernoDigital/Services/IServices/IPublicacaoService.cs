@@ -21,5 +21,10 @@ namespace CadernoDigital.Services.IServices
 
         List<ProfessorModel> BuscarProfessores();
 
+        Guid BuscarIdDisciplinaProfessor(Guid dis, Guid prof);
+
+        string TratarUpload(PublicacaoViewModel pub);
+
+
     }
 }

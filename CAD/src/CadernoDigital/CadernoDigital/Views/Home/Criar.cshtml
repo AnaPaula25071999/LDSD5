@@ -33,14 +33,14 @@
 
     <div class="form-group">
         <label for="conteudo" class="form-label">Disciplina</label>
-        <select type="text" asp-for="Publicacao.Id_Disciplina" asp-items="@(new SelectList(Model.Disciplinas,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
-        @Html.ValidationMessageFor(x => x.Publicacao.Id_Disciplina)
+        <select type="text" asp-for="DisciplinaProfessor.Id_Disciplina" asp-items="@(new SelectList(Model.Disciplinas,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+        @Html.ValidationMessageFor(x => x.DisciplinaProfessor.Id_Disciplina)
     </div>
 
     <div class="form-group">
         <label for="conteudo" class="form-label">Professor</label>
-        <select type="text" asp-for="Publicacao.Id_Professor" asp-items="@(new SelectList(Model.Professores,"Id","Nome"))" class="form-control"><option value="">Escolha..</option></select>
-        @Html.ValidationMessageFor(x => x.Publicacao.Id_Professor)
+        <select type="text" asp-for="DisciplinaProfessor.Id_Professor" asp-items="@(new SelectList(Model.Professores,"Id","Nome"))" class="form-control"><option value="">Escolha..</option></select>
+        @Html.ValidationMessageFor(x => x.DisciplinaProfessor.Id_Professor)
     </div>
 
     <div class="form-group">
