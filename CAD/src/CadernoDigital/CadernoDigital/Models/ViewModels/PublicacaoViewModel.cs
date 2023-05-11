@@ -29,7 +29,6 @@ namespace CadernoDigital.Models.ViewModels
 
         public IFormFile Imagem { get; set; }
 
-
     }
 }
 
