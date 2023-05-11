@@ -45,7 +45,7 @@
 
         <div class="mb-3 form-group">
             <label for="imagem" class="form-label">Faça upload da imagem</label>
-            <input type="file" asp-for="Imagem" class="form-control" placeholder="Selecione a imagem para upload">
+            <input id="inputFile" type="file" accept=".jpeg,.jpg,.png,.mp4" asp-for="Imagem" class="form-control" placeholder="Selecione a imagem para upload">
             @Html.ValidationMessageFor(x => x.Imagem)
         </div>
 
@@ -54,4 +54,12 @@
         <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
     </form>
 </div>
+<script>
+    $("#inputFile").change(function(){
+        var fileName = $("#inputFile")[0].files.name
+        console.log($("#inputFile")[0].files.name)
+    })
+
+
+</script>
 <br />
