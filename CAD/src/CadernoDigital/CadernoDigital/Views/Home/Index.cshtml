@@ -1,4 +1,5 @@
 ﻿@model List<CadernoDigital.Models.ViewModels.PublicacaoViewModel>
+<link rel="stylesheet" href="~/css/index.css"/>
 
 @{
     ViewData["Title"] = "Publicações";
@@ -13,8 +14,139 @@
 }
 <br />
 
-<div class="text-center">
 
+
+<div class="text-center">
+    <!-- Page Container -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
+        <div class="w3-row">
+            <!-- Left Column -->
+            <div class="w3-col m3">
+                <!-- Profile -->
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container">
+                        <h4 class="w3-center">My Profile</h4>
+                        <p class="w3-center"><img src="~/assets/imagem/01-05-2023T21-58-23_Obito.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                        <a asp-controller="Usuario" asp-action="Index"><button style="border-radius: 5px" type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Meu Perfil</button></a>
+                        <hr>
+                        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Developer, TI</p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Guarulhos, SP</p>
+                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> 1, Abril 1988</p>
+                    </div>
+                </div>
+                <br>
+                <!-- Interests -->
+                <div class="w3-card w3-round w3-white w3-hide-small">
+                    <div class="w3-container">
+                        <p>Interests</p>
+                        <p>
+                            <span class="w3-tag w3-small w3-theme-d5">C#</span>
+                            <span class="w3-tag w3-small w3-theme-d4">Java</span>
+                            <span class="w3-tag w3-small w3-theme-d3">Django</span>
+                            <span class="w3-tag w3-small w3-theme-d2">Python</span>
+                        </p>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Alert Box -->
+
+
+                <!-- End Left Column -->
+            </div>
+
+            <!-- Middle Column -->
+            <div class="w3-col m7">
+
+                <div class="w3-row-padding">
+                    <div class="w3-col m12">
+                        <div class="w3-card w3-round w3-white">
+                            <div class="w3-container w3-padding">
+                                <h6 class="w3-opacity">Escreva o que está pensando...</h6>
+                                <input style="width: 80%; margin-bottom: 5px" type="text" class="w3-border w3-padding" placeholder="Ex.: Fiz um projeto em ASP.NET">
+                                <a asp-controller="Home" asp-action="Criar"><button style="border-radius: 5px" type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Nova Publicação</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Esse cara que vai repetir-->
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var publucacao in Model)
+                    {
+                        <div class="w3-container w3-card w3-white w3-round w3-margin">
+                            <div>
+                                <h4 style="position: relative; top: 11px;">
+                                    @publucacao.Publicacao.Titulo 
+                                </h4>
+                                <span style="position: relative" top="-20" class="w3-right w3-opacity">@publucacao.Publicacao.DataCadastro</span>
+                            </div>
+                            <br>
+                            <div class="w3-row-padding" style="margin:0 -16px">
+                                <div class="w3-center">
+                                    <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" style="border-radius:5%; width:50%" alt="Northern Lights" class="w3-margin-bottom">
+                                </div>
+                                <p>@publucacao.Publicacao.Conteudo</p>
+                            </div>
+                            
+                            <hr class="w3-clear">
+                            <h4>
+                                <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Disciplina:</span> <span>@publucacao.Disciplina.Nome</span>
+                            </h4>
+                            <h4>
+                                <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Professor:</span> <span>@publucacao.Professor.Nome</span>
+                            </h4>
+                            
+                            <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
+                                <button style="margin-left:10px; border-radius: 5px" type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                                <a data-bs-toggle="modal" data-bs-target="#@publucacao.Publicacao.Id.ToString()"><button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </a>
+                            </div>
+                        </div>
+                    }
+                }
+                <!--Até aqui-->
+                else
+                {
+                    <tr class="odd"><td valign="top" colspan="5">Nenhuma publicação encontrada</td></tr>
+                }
+                <!-- End Middle Column -->
+            </div>
+
+            <!-- Right Column -->
+            <div class="w3-col m2">
+                <div class="w3-card w3-round w3-white w3-center">
+                    <div class="w3-container">
+                        <span class="heading">User Rating</span>
+                        <br />
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <p>4.1 average based on 254 reviews.</p>
+                        <hr style="border:3px solid #f1f1f1">
+                    </div>
+                </div>
+                <br>
+
+                <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+                    <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+                        <i class="fa fa-remove"></i>
+                    </span>
+                    <p><strong>Oie!</strong></p>
+                    <p>Continue postando novidades!.</p>
+                </div>
+
+                <!-- End Right Column -->
+            </div>
+
+            <!-- End Grid -->
+        </div>
+
+        <!-- End Page Container -->
+    </div>
+    <br>
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a class="btn btn-primary" asp-controller="Home" asp-action="Criar" role="button">Adicionar nova publicação</a>
     </div>
@@ -34,23 +166,8 @@
             foreach (var publucacao in Model)
             {
                 <div class="card">
-                    <label>Disciplina</label>
-                    <h5 class="card-title">@publucacao.Disciplina.Nome</h5>
-                    <label>Professor</label>
-                    <h5 class="card-title">@publucacao.Professor.Nome</h5>
-                    <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
-                         style="width:50%;height:50%; align-self:center;">
-                    <div class="card-body">
-                        <h5 class="card-title">@publucacao.Publicacao.Titulo</h5>
-                        <p class="card-text">@publucacao.Publicacao.Conteudo</p>
-                    </div>
-                    <p class="card-text"><h6>Data publicação:</h6>@publucacao.Publicacao.DataCadastro</p>
-                    <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.Publicacao.DataAtualizacao</p>
 
                     @*Comentario*@
-                    <button type="button" class="btn btn-primary justify-content-md-center" data-bs-toggle="modal" data-bs-target="#@publucacao.Publicacao.Id.ToString()">
-                        Comentários
-                    </button>
 
                     <div class="modal fade" id="@publucacao.Publicacao.Id.ToString()" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl">
@@ -111,3 +228,26 @@
     </div>
 
 </div>
+<script>
+
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-theme-d1";
+        } else {
+            x.className = x.className.replace("w3-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-theme-d1", "");
+        }
+    }
+</script>
