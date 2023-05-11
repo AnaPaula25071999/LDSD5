@@ -46,6 +46,58 @@
                     </div>
                     <p class="card-text"><h6>Data publicação:</h6>@publucacao.Publicacao.DataCadastro</p>
                     <p class="card-text"><h6>Data ultima edição:</h6>@publucacao.Publicacao.DataAtualizacao</p>
+
+                    @*Comentario*@
+                    <button type="button" class="btn btn-primary justify-content-md-center" data-bs-toggle="modal" data-bs-target="#@publucacao.Publicacao.Id.ToString()">
+                        Comentários
+                    </button>
+
+                    <div class="modal fade" id="@publucacao.Publicacao.Id.ToString()" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Comentários</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
+                                                 style="width:100%;height:100%; align-self:center;">
+                                        </div>
+                                        <div class="col-6">
+                                            <h5 class="card-title">@publucacao.Disciplina.Nome</h5>
+                                            <h5 class="card-title">@publucacao.Professor.Nome</h5>
+                                            <br />
+                                            <h5 class="card-title">@publucacao.Publicacao.Titulo</h5>
+                                            <p class="card-text">@publucacao.Publicacao.Conteudo</p>
+                                            <hr />
+                                            <div class="overflow-scroll-">
+                                                @if (publucacao.Comentarios != null && publucacao.Comentarios.Any())
+                                                {
+                                                    @foreach (var comentario in publucacao.Comentarios)
+                                                    {
+                                                        if (comentario.Id_Publicacao == publucacao.Publicacao.Id)
+                                                        {
+                                                            <div class="card">
+                                                                <h5 class="card-title">@comentario.Usuario</h5>
+                                                                <p class="card-text">@comentario.Conteudo</p>
+                                                            </div>
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <a type="button" asp-action="Comentar" asp-route-id="@publucacao.Publicacao.Id" role="button" class="btn btn-primary">Comentar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <br />
@@ -59,5 +111,3 @@
     </div>
 
 </div>
-
-

@@ -60,6 +60,12 @@ namespace CadernoDigital.Controllers
             return View(contato);
         }
 
+        public IActionResult Comentar(Guid id)
+        {
+            PublicacaoViewModel Comentario = _publicacaoService.ComentarioPorId(id);
+            return View(Comentario);
+        }
+
         [HttpPost]
         public IActionResult Publicar(PublicacaoViewModel pub)
         {
@@ -113,6 +119,29 @@ namespace CadernoDigital.Controllers
             {
                 TempData["MensagemErro"] = $"Ops, não conseguimos atualizar a publicação, tente novamante, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Comentar(string id, string coment)
+        {
+            if (_sessao.BuscarSessaoDoUsuario() == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            try
+            {
+                var result = _publicacaoService.Comentar(id, coment);
+
+                TempData["MensagemSucesso"] = "Sucesso na publicação!";
+
+                return Comentar(Guid.Parse(id));
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos realizar sua publicação, tente novamante, detalhe do erro: {ex.Message}";
+                return RedirectToAction("Comentar");
             }
         }
 

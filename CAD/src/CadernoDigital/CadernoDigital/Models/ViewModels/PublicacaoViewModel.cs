@@ -15,14 +15,17 @@ namespace CadernoDigital.Models.ViewModels
 
         public DisciplinaModel Disciplina { get; set; }
 
-        public DisciplinaProfessorModel DisciplinaProfessor { get; set; }
-
+        public ComentarioViewModel Comentario { get; set; }
 
         public UsuarioModel Usuario { get; set; }
+
+        public DisciplinaProfessorModel DisciplinaProfessor { get; set; }
 
         public ICollection<ProfessorModel> Professores { get; set; }
 
         public ICollection<DisciplinaModel> Disciplinas { get; set; }
+
+        public ICollection<ComentarioViewModel> Comentarios { get; set; }
 
         public IFormFile Imagem { get; set; }
 

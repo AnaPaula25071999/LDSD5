@@ -17,6 +17,7 @@ namespace CadernoDigital.Data
         public DbSet<PublicacaoModel> Publicacao { get; set; }
         public DbSet<DisciplinaModel> Disciplina { get; set; }
         public DbSet<ProfessorModel> Professor { get; set; }
+        public DbSet<ComentarioModel> Comentario { get; set; }
         public DbSet<DisciplinaProfessorModel> DisciplinaProfessor { get; set; }
 
     }

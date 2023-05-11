@@ -1,0 +1,47 @@
+﻿@model CadernoDigital.Models.ViewModels.PublicacaoViewModel
+@{
+    ViewData["Title"] = "Comentar Publicação";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Comentar Publicação</h1>
+</div>
+
+
+<form asp-controller="Home" asp-action="Comentar" method="post">
+    <div class="row">
+        <input style="opacity:0%;" type="text" name="name" value="@Model.Publicacao.Id.ToString()" disabled />
+        <div class="col-10"><textarea name="coment" id="coment" placeholder="Adicione um comentário..."></textarea></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Comentar</button>
+    <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
+</form>
+
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/assets/imagem/@Model.Publicacao.Imagem" class="card-img-top" alt="publicação"
+                 style="width:50%;height:50%; align-self:center;">
+        </div>
+        <div class="col-6">
+            <h5 class="card-title">@Model.Disciplina.Nome</h5>
+            <h5 class="card-title">@Model.Professor.Nome</h5>
+            <br />
+            <h5 class="card-title">@Model.Publicacao.Titulo</h5>
+            <p class="card-text">@Model.Publicacao.Conteudo</p>
+            <hr />
+            @if (Model.Comentarios != null && Model.Comentarios.Any())
+            {
+                <div class="overflow-scroll-">
+                    @foreach (var comentario in Model.Comentarios)
+                    {
+                        <div class="card">
+                            <h5 class="card-title">@comentario.Usuario</h5>
+                            <p class="card-text">@comentario.Conteudo</p>
+                        </div>}
+                </div>}
+        </div>
+    </div>
+</div>

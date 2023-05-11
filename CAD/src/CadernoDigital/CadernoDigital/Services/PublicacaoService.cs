@@ -36,12 +36,14 @@ namespace CadernoDigital.Services
 
                 var dis = _context.Disciplina.FirstOrDefault(x => x.Id == result.Id_Disciplina);
                 var pro = _context.Professor.FirstOrDefault(x => x.Id == result.Id_Professor);
+                var coment = BuscarComentarios(pub[i].Id);
 
                 publicacao.Add(new PublicacaoViewModel()
                 {
                     Publicacao = pub[i],
                     Disciplina = dis,
-                    Professor = pro
+                    Professor = pro,
+                    Comentarios = coment
                 });
             };
 
@@ -63,6 +65,30 @@ namespace CadernoDigital.Services
             return publicacao;
         }
 
+        public ComentarioModel Comentar(string id, string coment)
+        {
+            ComentarioModel comentario = new ComentarioModel();
+            comentario.Conteudo = coment;
+            comentario.Id_Publicacao = Guid.Parse(id);
+            comentario.Id_Usuario = _sessao.BuscarSessaoDoUsuario().Id;
+            comentario.DataCadastro = DateTime.Now;
+            comentario.DataAtualizacao = DateTime.Now;
+            _context.Comentario.Add(comentario);
+            _context.SaveChanges();
+            return comentario;
+
+        }
+
+        public PublicacaoViewModel ComentarioPorId(Guid id)
+        {
+            PublicacaoViewModel publicacao = new PublicacaoViewModel();
+            publicacao.Publicacao = BuscarPorID(id);
+            var result = _context.DisciplinaProfessor.FirstOrDefault(x => x.Id == publicacao.Publicacao.Id_Disciplina_Professor);
+            publicacao.Professor = BuscarProfessorPorID(result.Id_Professor);
+            publicacao.Disciplina = BuscarDisciplinaPorID(result.Id_Disciplina);
+            publicacao.Comentarios = BuscarComentarios(id);
+            return publicacao;
+        }
 
         public PublicacaoModel Atualizar(PublicacaoModel publicacao)
         {
@@ -88,11 +114,44 @@ namespace CadernoDigital.Services
             return _context.Professor.ToList();
         }
 
+        public List<ComentarioViewModel> BuscarComentarios(Guid idPublicacao)
+        {
+            List<ComentarioModel> result = _context.Comentario.Where(x => x.Id_Publicacao == idPublicacao).ToList();
+
+            List<ComentarioViewModel> comentario = new List<ComentarioViewModel>();
+
+            for (var i = 0; i < result.Count; i++)
+            {
+                var user = _context.Usuario.FirstOrDefault(x => x.Id == result[i].Id_Usuario);
+
+                comentario.Add(new ComentarioViewModel()
+                {
+                    Conteudo = result[i].Conteudo,
+                    Usuario = user.Nome,
+                    Id_Publicacao = result[i].Id_Publicacao,
+                });
+            };
+
+            return comentario;
+        }
+
         public Guid BuscarIdDisciplinaProfessor(Guid dis, Guid prof)
         {
             var result = _context.DisciplinaProfessor.Where(x => x.Id_Disciplina == dis && x.Id_Professor == prof).FirstOrDefault();
 
             return result.Id;
+
+        }
+
+        public DisciplinaModel BuscarDisciplinaPorID(Guid id)
+        {
+            return _context.Disciplina.FirstOrDefault(x => x.Id == id);
+
+        }
+
+        public ProfessorModel BuscarProfessorPorID(Guid id)
+        {
+            return _context.Professor.FirstOrDefault(x => x.Id == id);
 
         }
 
