@@ -15,7 +15,11 @@
 <br />
 
 
-
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 <div class="text-center">
     <!-- Page Container -->
     <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
@@ -73,34 +77,41 @@
                 <!--Esse cara que vai repetir-->
                 @if (Model != null && Model.Any())
                 {
-                    foreach (var publucacao in Model)
+                    foreach (var publicacao in Model)
                     {
                         <div class="w3-container w3-card w3-white w3-round w3-margin">
                             <div>
-                                <h4 style="position: relative; top: 11px;">
-                                    @publucacao.Publicacao.Titulo 
-                                </h4>
-                                <span style="position: relative" top="-20" class="w3-right w3-opacity">@publucacao.Publicacao.DataCadastro</span>
+                                <div class="d-flex justify-content-between">
+                                    <h4 style="position: relative; top: 11px;">
+                                        @publicacao.Publicacao.Titulo
+                                    </h4>
+                                    <span style="margin-top: 20px" class="w3-right w3-opacity">@publicacao.Publicacao.DataCadastro</span>
+                                </div>
+
+                                @if (@publicacao.Publicacao.Conteudo != null)
+                                {
+                                    <span class="showMore" style="color:gray; font-size:10px; cursor: pointer">Show More</span>
+                                    <p class="pHidden hidden">@publicacao.Publicacao.Conteudo</p>
+                                }
                             </div>
                             <br>
                             <div class="w3-row-padding" style="margin:0 -16px">
                                 <div class="w3-center">
-                                    <img src="~/assets/imagem/@publucacao.Publicacao.Imagem" style="border-radius:5%; width:50%" alt="Northern Lights" class="w3-margin-bottom">
+                                    <img src="~/assets/imagem/@publicacao.Publicacao.Imagem" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
                                 </div>
-                                <p>@publucacao.Publicacao.Conteudo</p>
                             </div>
-                            
+
                             <hr class="w3-clear">
                             <h4>
-                                <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Disciplina:</span> <span>@publucacao.Disciplina.Nome</span>
+                                <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Disciplina:</span> <span>@publicacao.Disciplina.Nome</span>
                             </h4>
                             <h4>
-                                <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Professor:</span> <span>@publucacao.Professor.Nome</span>
+                                <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Professor:</span> <span>@publicacao.Professor.Nome</span>
                             </h4>
-                            
+
                             <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
                                 <button style="margin-left:10px; border-radius: 5px" type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                                <a data-bs-toggle="modal" data-bs-target="#@publucacao.Publicacao.Id.ToString()"><button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </a>
+                                <a data-bs-toggle="modal" data-bs-target="#@publicacao.Publicacao.Id.ToString()"><button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </a>
                             </div>
                         </div>
                     }
@@ -110,8 +121,9 @@
                 {
                     <tr class="odd"><td valign="top" colspan="5">Nenhuma publicação encontrada</td></tr>
                 }
-                <!-- End Middle Column -->
+                
             </div>
+            <!-- End Middle Column -->
 
             <!-- Right Column -->
             <div class="w3-col m2">
@@ -238,4 +250,15 @@
                 x.previousElementSibling.className.replace(" w3-theme-d1", "");
         }
     }
+
+    $(".showMore").click(function () {
+        $(this).siblings('.pHidden').slideToggle()
+        if ($(this).hasClass('isShow')) {
+            $(this).removeClass('isShow')
+            $(this).text('Show More')
+        } else {
+            $(this).addClass('isShow')
+            $(this).text('Show Less')
+        }
+    })
 </script>

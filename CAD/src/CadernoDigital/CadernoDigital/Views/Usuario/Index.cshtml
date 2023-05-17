@@ -12,100 +12,158 @@
     </div>
 }
 <br />
+<style>
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #19638c
+    }
 
-<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-    <a class="btn btn-primary" asp-controller="Home" asp-action="Index" role="button">Tela inicial</a>
-</div>
-<br />
-<div class="text-center">
+    .profile-button {
+        background: #4D636F;
+        box-shadow: none;
+        border: none
+    }
 
+    .profile-button:hover {
+            background: #4D636F
+    }
+
+    .profile-button:focus {
+            background: #4D636F;
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: #4D636F;
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: #4D636F;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: #4D636F;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #4D636F
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
     @foreach (var result in Model)
     {
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Minhas informações
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row">
-                            @*<div class="col-3 card">
-                                <h5>Nome</h5>
-                                <p>@result.Usuario.Foto</p>
-                            </div>*@
-                            <div class="col-3 card">
-                                <h5>Nome</h5>
-                                <p>@result.Usuario.Nome</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>E-mail</h5>
-                                <p>@result.Usuario.Email</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>Matricula</h5>
-                                <p>@result.Usuario.Matricula</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>E-mail</h5>
-                                <p>@result.Usuario.Celular</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>Biografia</h5>
-                                <p>@result.Usuario.Biografia</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>Genero</h5>
-                                <p>@result.Usuario.Genero</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>Celular</h5>
-                                <p>@result.Usuario.Celular</p>
-                            </div>
-                            <div class="col-3 card">
-                                <h5>Ultima edição perfil</h5>
-                                <p>@result.Usuario.DataAtualizacao</p>
-                            </div>
-
-                        </div>
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">@result.Usuario.Nome</span><span class="text-black-50">@result.Usuario.Email</span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
                     </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12"><label class="labels">Name:</label><input type="text" class="form-control" placeholder="first name" value="@result.Usuario.Nome"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="@result.Usuario.Celular"></div>
+                        <div class="col-md-12"><label class="labels">Matricula</label><input disabled type="text" class="form-control" placeholder="enter GU" value="@result.Usuario.Matricula"></div>
+                        <div class="col-md-12"><label class="labels">Gender: </label><input type="text" class="form-control" placeholder="enter gender" value="@result.Usuario.Genero"></div>
+                        <hr/>
+                        <div class="col-md-12"><label class="labels">Last Update: </label><p>@result.Usuario.DataAtualizacao</p></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Interests</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Interests</span></div><br>
+                <div class="col-md-12"><label class="labels">Interests:</label><input type="text" class="form-control" placeholder="Interests: " value=""></div> <br>
             </div>
         </div>
         break;
     }
-    <br />
-
-
-    <h1 class="display-4">Minhas publicações</h1>
-
-    <div style="width=50%;">
-        @foreach (var publicacao in Model)
-        {
-            if (publicacao.Publicacao != null)
-            {
-                <div class="card">
-                    <label>Disciplina</label>
-                    <h5 class="card-title">@publicacao.Disciplina.Nome</h5>
-                    <label>Professor</label>
-                    <h5 class="card-title">@publicacao.Professor.Nome</h5>
-                    <img src="~/assets/imagem/@publicacao.Publicacao.Imagem" class="card-img-top" alt="publicação"
-                         style="width:50%;height:50%; align-self:center;">
-                    <div class="card-body">
-                        <h5 class="card-title">@publicacao.Publicacao.Titulo</h5>
-                        <p class="card-text">@publicacao.Publicacao.Conteudo</p>
-                    </div>
-                    <p class="card-text"><h6>Data publicação:</h6>@publicacao.Publicacao.DataCadastro</p>
-                    <p class="card-text"><h6>Data ultima edição:</h6>@publicacao.Publicacao.DataAtualizacao</p>
-                </div>
-
-                <br />
-                <br />
-            }
-        }
     </div>
+</div>
+
+<div class="w3-row d-flex justify-content-center">
+
+    <div class=" w3-col m7">
+
+        <!--Esse cara que vai repetir-->
+        @if (Model != null && Model.Any()){
+            @foreach (var publicacao in Model){
+                if(publicacao.Publicacao != null)
+                {
+
+                    <div class="w3-container w3-card w3-white w3-round w3-margin">
+                        <div>
+                           <div class="d-flex justify-content-between">
+                                <h4 style="position: relative; top: 11px;">
+                                    @publicacao.Publicacao.Titulo
+                                </h4>
+                                <span style="margin-top: 20px" class="w3-right w3-opacity">@publicacao.Publicacao.DataCadastro</span>
+                           </div>
+
+                            @if (@publicacao.Publicacao.Conteudo != null)
+                            {
+                                <span class="showMore" style="color:gray; font-size:10px; cursor: pointer">Show More</span>
+                                <p class="pHidden hidden">@publicacao.Publicacao.Conteudo</p>
+                            }
+                        </div>
+                        <br>
+                        <div class="w3-row-padding" style="margin:0 -16px">
+                            <div class="w3-center">
+                                <img src="~/assets/imagem/@publicacao.Publicacao.Imagem" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                            </div>
+                        </div>
+
+                        <hr class="w3-clear">
+                        <h4>
+                            <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Disciplina:</span> <span>@publicacao.Disciplina.Nome</span>
+                        </h4>
+                        <h4>
+                            <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Professor:</span> <span>@publicacao.Professor.Nome</span>
+                        </h4>
+
+                        <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
+                            
+                            <a data-bs-toggle="modal" data-bs-target="#@publicacao.Publicacao.Id.ToString()"><button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </a>
+                        </div>
+                    </div>
+                    
+                }
+            }
+        }else{
+            <tr class="odd"><td valign="top" colspan="5">Nenhuma publicação encontrada</td></tr>
+        }
+
+        
+
+    </div>   
 
 </div>
+<script>
+    $(".showMore").click(function(){
+        $(this).siblings('.pHidden').slideToggle()
+        if($(this).hasClass('isShow')){
+            $(this).removeClass('isShow')
+            $(this).text('Show More')
+        }else{
+            $(this).addClass('isShow')
+            $(this).text('Show Less')
+        }
+    })
+
+</script>
 
 

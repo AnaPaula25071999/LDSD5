@@ -10,7 +10,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 
 namespace CadernoDigital.Controllers
 {
@@ -20,6 +19,8 @@ namespace CadernoDigital.Controllers
         private readonly ISessao _sessao;
         private readonly IPublicacaoService _publicacaoService;
         private string _caminhoImagem;
+        private string _dir;
+
 
         public HomeController(ILogger<HomeController> logger, ISessao sessao, IPublicacaoService publicacaoService,
             IWebHostEnvironment caminhoImagem)
@@ -65,6 +66,8 @@ namespace CadernoDigital.Controllers
             PublicacaoViewModel Comentario = _publicacaoService.ComentarioPorId(id);
             return View(Comentario);
         }
+
+
 
         [HttpPost]
         public IActionResult Publicar(PublicacaoViewModel pub)
@@ -122,6 +125,9 @@ namespace CadernoDigital.Controllers
             }
         }
 
+
+
+
         [HttpPost]
         public IActionResult Comentar(string id, string coment)
         {
@@ -157,5 +163,6 @@ namespace CadernoDigital.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
