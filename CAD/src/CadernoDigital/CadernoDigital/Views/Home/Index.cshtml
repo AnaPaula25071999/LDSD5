@@ -19,6 +19,13 @@
     .hidden {
         display: none;
     }
+    .w3-theme-d2 {
+        color: #fff !important;
+        background-color: #6c63ff !important;
+    }
+    .w3-padding-large {
+        padding: 6px 24px !important;
+    }
 </style>
 <div class="text-center">
     <!-- Page Container -->
@@ -31,8 +38,8 @@
                 <div class="w3-card w3-round w3-white">
                     <div class="w3-container">
                         <h4 class="w3-center">My Profile</h4>
-                        <p class="w3-center"><img src="~/assets/imagem/01-05-2023T21-58-23_Obito.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                        <a asp-controller="Usuario" asp-action="Index"><button style="border-radius: 5px" type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Meu Perfil</button></a>
+                        <p class="w3-center"><img src="~/assets/imagem/my-profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                        <a asp-controller="Usuario" asp-action="Index"><button style="border-radius: 5px" type="button" class="w3-button w3-theme-d2"><i class="fa fa-pencil"></i> Meu Perfil</button></a>
                         <hr>
                         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Developer, TI</p>
                         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Guarulhos, SP</p>
@@ -45,9 +52,9 @@
                     <div class="w3-container">
                         <p>Interests</p>
                         <p>
-                            <span class="w3-tag w3-small w3-theme-d5">C#</span>
-                            <span class="w3-tag w3-small w3-theme-d4">Java</span>
-                            <span class="w3-tag w3-small w3-theme-d3">Django</span>
+                            <span class="w3-tag w3-small w3-theme-d2">C#</span>
+                            <span class="w3-tag w3-small w3-theme-d2">Java</span>
+                            <span class="w3-tag w3-small w3-theme-d2">Django</span>
                             <span class="w3-tag w3-small w3-theme-d2">Python</span>
                         </p>
                     </div>
@@ -69,7 +76,7 @@
                             <div class="w3-container w3-padding">
                                 <h6 class="w3-opacity">Escreva o que está pensando...</h6>
                                 <input style="width: 80%; margin-bottom: 5px" type="text" class="w3-border w3-padding" placeholder="Ex.: Fiz um projeto em ASP.NET">
-                                <a asp-controller="Home" asp-action="Criar"><button style="border-radius: 5px" type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Nova Publicação</button></a>
+                                <a asp-controller="Home" asp-action="Criar"><button style="border-radius: 5px" type="button" class="w3-button w3-theme-d2"><i class="fa fa-pencil"></i> Nova Publicação</button></a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +117,7 @@
                             </h4>
 
                             <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
-                                <button style="margin-left:10px; border-radius: 5px" type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                                <button style="margin-left:10px; border-radius: 5px" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
                                 <a data-bs-toggle="modal" data-bs-target="#@publicacao.Publicacao.Id.ToString()"><button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </a>
                             </div>
                         </div>

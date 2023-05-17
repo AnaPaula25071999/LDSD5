@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\assets\imagem\" />
     <Folder Include="wwwroot\assets\video\" />
   </ItemGroup>
 
