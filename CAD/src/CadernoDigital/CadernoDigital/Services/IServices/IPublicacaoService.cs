@@ -33,6 +33,8 @@ namespace CadernoDigital.Services.IServices
 
         Guid BuscarIdDisciplinaProfessor(Guid dis, Guid prof);
 
+        void AtualizaCurtida(Guid publicacao);
+
         string TratarUpload(PublicacaoViewModel pub);
 
 

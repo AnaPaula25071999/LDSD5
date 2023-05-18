@@ -155,6 +155,34 @@ namespace CadernoDigital.Services
 
         }
 
+
+        public void AtualizaCurtida(Guid publicacao)
+        {
+            
+            var usuario = _sessao.BuscarSessaoDoUsuario().Id;
+            var result = _context.Curtida.Where(x => x.Id_Usuario == usuario && x.Id_Publicacao == publicacao).SingleOrDefault();
+
+            CurtidaModel curtida = new CurtidaModel();
+            curtida.Id_Publicacao = publicacao;
+            curtida.Id_Usuario = usuario;
+
+            if (result == null)
+            {
+                curtida.DataCadastro = DateTime.Now;
+                curtida.DataAtualizacao = DateTime.Now;
+                _context.Curtida.Add(curtida);
+            }
+            else
+            {
+                _context.Curtida.Remove(result);
+            }
+
+            _context.SaveChanges();
+
+        }
+
+
+
         public string TratarUpload(PublicacaoViewModel pub)
         {
             _caminhoImagem += "\\assets\\imagem\\";

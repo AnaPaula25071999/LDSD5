@@ -21,10 +21,9 @@ CREATE TABLE Usuario(
 CREATE TABLE Publicacao(
     Id UNIQUEIDENTIFIER  PRIMARY KEY DEFAULT NEWID() NOT NULL,
     Conteudo VARCHAR(1000),
-	Titulo VARCHAR(100),
+	Titulo VARCHAR(1000),
     Imagem VARCHAR(1000),
-	Video VARCHAR(100),	
-	Curtida INT,
+	Video VARCHAR(1000),	
     DataCadastro Datetime,
     DataAtualizacao Datetime,
 	Id_Usuario UNIQUEIDENTIFIER,
@@ -33,7 +32,7 @@ CREATE TABLE Publicacao(
 
 CREATE TABLE Comentario (
   Id UNIQUEIDENTIFIER  PRIMARY KEY DEFAULT NEWID() NOT NULL,
-  Conteudo VARCHAR(255),
+  Conteudo VARCHAR(1000),
   DataCadastro Datetime,
   DataAtualizacao Datetime,
   Id_Usuario UNIQUEIDENTIFIER,
@@ -44,14 +43,23 @@ CREATE TABLE Disciplina (
   Id UNIQUEIDENTIFIER  PRIMARY KEY DEFAULT NEWID() NOT NULL,
   Nome VARCHAR(255),
   DataCadastro Datetime,
-  DataAtualizacao Datetime,
+  DataAtualizacao Datetime
 )
 
 CREATE TABLE Professor (
   Id UNIQUEIDENTIFIER  PRIMARY KEY DEFAULT NEWID() NOT NULL,
   Nome VARCHAR(255),
   DataCadastro Datetime,
+  DataAtualizacao Datetime
+)
+
+
+CREATE TABLE Curtida (
+  Id UNIQUEIDENTIFIER  PRIMARY KEY DEFAULT NEWID() NOT NULL,
+  DataCadastro Datetime,
   DataAtualizacao Datetime,
+  Id_Usuario UNIQUEIDENTIFIER,
+  Id_Publicacao UNIQUEIDENTIFIER
 )
 
 CREATE TABLE DisciplinaProfessor (
@@ -62,7 +70,7 @@ CREATE TABLE DisciplinaProfessor (
   HorarioInicioAula VARCHAR(20),
   HorarioFimAula VARCHAR(20),
   DataCadastro Datetime,
-  DataAtualizacao Datetime,
+  DataAtualizacao Datetime
 )
 
 
@@ -74,6 +82,11 @@ FOREIGN KEY (Id_Disciplina_Professor) REFERENCES DisciplinaProfessor(Id)
 
 --FK Comentario
 ALTER TABLE Comentario ADD 
+FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id),
+FOREIGN KEY (Id_Publicacao) REFERENCES Publicacao(Id)
+
+--FK Curtida
+ALTER TABLE Curtida ADD 
 FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id),
 FOREIGN KEY (Id_Publicacao) REFERENCES Publicacao(Id)
 

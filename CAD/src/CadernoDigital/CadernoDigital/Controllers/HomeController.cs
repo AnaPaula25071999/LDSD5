@@ -6,11 +6,14 @@ using ControleDeContatos.Helper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 
 namespace CadernoDigital.Controllers
 {
@@ -19,14 +22,16 @@ namespace CadernoDigital.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ISessao _sessao;
         private readonly IPublicacaoService _publicacaoService;
+        private readonly IMemoryCache _memoryCache;
         private string _caminhoImagem;
 
         public HomeController(ILogger<HomeController> logger, ISessao sessao, IPublicacaoService publicacaoService,
-            IWebHostEnvironment caminhoImagem)
+            IMemoryCache memoryCache, IWebHostEnvironment caminhoImagem)
         {
             _logger = logger;
             _sessao = sessao;
             _publicacaoService = publicacaoService;
+            _memoryCache = memoryCache;
             _caminhoImagem = caminhoImagem.WebRootPath;
         }
 
@@ -63,6 +68,7 @@ namespace CadernoDigital.Controllers
         public IActionResult Comentar(Guid id)
         {
             PublicacaoViewModel Comentario = _publicacaoService.ComentarioPorId(id);
+            SetCache(id);
             return View(Comentario);
         }
 
@@ -143,6 +149,21 @@ namespace CadernoDigital.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar sua publicação, tente novamante, detalhe do erro: {ex.Message}";
                 return RedirectToAction("Comentar");
             }
+        }
+        
+        [HttpPost]
+        public IActionResult Curtida()
+        {
+            var publicacao = Guid.Parse(_memoryCache.Get("Publicacao").ToString());
+            _publicacaoService.AtualizaCurtida(publicacao);
+
+            return RedirectToAction("Comentar", new { id = publicacao });
+        }
+
+        public void SetCache(Guid id)
+        {
+            _memoryCache.Set("Publicacao", id);
+
         }
 
         public IActionResult GerarSenha()
