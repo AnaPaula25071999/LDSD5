@@ -22,6 +22,18 @@
         html, body, h1, h2, h3, h4, h5 {
             font-family: "Open Sans", sans-serif
         }
+        .w3-padding-large {
+            padding: 6px 24px !important
+        }
+        .w3-theme-d5 {
+            color: #fff !important;
+            background-color: #4a44b3 !important;
+        }
+
+        .w3-theme-d3 {
+            color: #fff !important;
+            background-color: #6c63ff !important;
+        }
     </style>
 
 
@@ -51,20 +63,23 @@
         <div class="w3-top">
             <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-                <a asp-action="Index" asp-controller="Home" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
+
+
+                <a asp-action="Index" asp-controller="Home" class="navbar-brand w3-bar-item w3-button w3-padding-large w3-theme-d2"><img class="w3-margin-right" src="/assets/imagem/logotipo.png"  width="155" height="50"></a>
+
+                @*<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
                 <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
-                <div class="w3-dropdown-hover w3-hide-small">
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>*@
+                @*<div class="w3-dropdown-hover w3-hide-small">
                     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
                     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
                         <a href="#" class="w3-bar-item w3-button">One new friend request</a>
                         <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
                         <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
                     </div>
-                </div>
+                </div>*@
                 <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-                    <img src="~/assets/imagem/01-05-2023T21-58-23_Obito.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+                    <img src="~/assets/imagem/graduated.png" class="w3-circle" style="height: 50px; width: 50px" alt="Avatar">
                 </a>
             </div>
         </div>

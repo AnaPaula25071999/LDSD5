@@ -11,55 +11,120 @@
     </div>
 }
 
+<style>
+    .w3-theme-d2 {
+        color: #fff !important;
+        background-color: #6c63ff !important;
+    }
+    .w3-padding-large {
+        padding: 6px 24px !important;
+    }
+    .w3-theme-d5 {
+        color: #fff !important;
+        background-color: #4a44b3 !important;
+    }
+    .w3-theme-d3 {
+        color: #fff !important;
+        background-color: #6c63ff !important;
+    }
+</style>
 
 <div class="text-center">
     <h1 class="display-4">Publicar Conteúdo</h1>
 </div>
 
 <div class="mb-5">
-    <form asp-controller="Home" asp-action="Publicar" method="post" enctype="multipart/form-data">
+    <form id="video-drop" asp-controller="Home" asp-action="Publicar" method="post" enctype="multipart/form-data">
 
         <div class="mb-3 form-group">
             <label for="titulo" class="form-label">Titulo</label>
-            <input type="text" asp-for="Publicacao.Titulo" class="form-control" placeholder="Digite seu titulo">
+            <input id="title" type="text" asp-for="Publicacao.Titulo" class="form-control" placeholder="Digite seu titulo">
             @Html.ValidationMessageFor(x => x.Publicacao.Titulo)
         </div>
 
         <div class="mb-3 form-group">
             <label for="conteudo" class="form-label">Conteudo</label>
-            <textarea asp-for="Publicacao.Conteudo" class="form-control" placeholder="Digite seu conteudo"></textarea>
+            <textarea id="conteudo" asp-for="Publicacao.Conteudo" class="form-control" placeholder="Digite seu conteudo"></textarea>
             @Html.ValidationMessageFor(x => x.Publicacao.Conteudo)
         </div>
 
         <div class="mb-3 form-group">
-            <label for="conteudo" class="form-label">Disciplina</label>
-            <select type="text" asp-for="DisciplinaProfessor.Id_Disciplina" asp-items="@(new SelectList(Model.Disciplinas,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+            <label for="disc" class="form-label">Disciplina</label>
+            <select id="disc" type="text" asp-for="DisciplinaProfessor.Id_Disciplina" asp-items="@(new SelectList(Model.Disciplinas,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
             @Html.ValidationMessageFor(x => x.DisciplinaProfessor.Id_Disciplina)
         </div>
 
         <div class="mb-3 form-group">
-            <label for="conteudo" class="form-label">Professor</label>
-            <select type="text" asp-for="DisciplinaProfessor.Id_Professor" asp-items="@(new SelectList(Model.Professores,"Id","Nome"))" class="form-control"><option value="">Escolha..</option></select>
+            <label for="prof" class="form-label">Professor</label>
+            <select id="prof" type="text" asp-for="DisciplinaProfessor.Id_Professor" asp-items="@(new SelectList(Model.Professores,"Id","Nome"))" class="form-control"><option value="">Escolha..</option></select>
             @Html.ValidationMessageFor(x => x.DisciplinaProfessor.Id_Professor)
         </div>
 
         <div class="mb-3 form-group">
-            <label for="imagem" class="form-label">Faça upload da imagem</label>
-            <input id="inputFile" type="file" accept=".jpeg,.jpg,.png,.mp4" asp-for="Imagem" class="form-control" placeholder="Selecione a imagem para upload">
+            <label for="imagem" class="form-label">Faça upload da imagem. <span id="labelMaxSize">Tamanho Max: 10MB </span></label>
+            <input id="inputFile" type="file" accept=".jpeg,.jpg,.png,.mp4" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
             @Html.ValidationMessageFor(x => x.Imagem)
         </div>
 
 
-        <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+        <button id="btnSubmit" type="submit" disabled class="btn btn-primary btn-block">Adicionar</button>
         <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
+       
+  
+
     </form>
+   
+
 </div>
 <script>
+    ////////////////////////////////////////////////////////////////////////
+
+    $("#title, #conteudo").on("keyup", function(){
+        if ($(this).val() == '') {
+            $(this).siblings('label').css('color', 'red')
+        }else{
+            $(this).siblings('label').css('color', 'green')
+        }
+        authenticate();
+    });
+
+    $("#disc, #prof").change(function(){
+        if ($(this).val() == '') {
+            $(this).siblings('label').css('color', 'red')
+        }else{
+            $(this).siblings('label').css('color', 'green')
+        }
+        authenticate();
+    })
+
     $("#inputFile").change(function(){
-        var fileName = $("#inputFile")[0].files.name
-        console.log($("#inputFile")[0].files.name)
+        if (($("#inputFile")[0].files[0].size / 1024 / 1024) > 30 ){
+            $(this).siblings('label').children().css('color', 'red')
+        }else{
+            $(this).siblings('label').children().css('color', 'green')
+        }
+        authenticate();
     })
 
 
+
+    ////////////////////////////////////////////////////////////////////////
+
+
+    function authenticate(){
+        if ($("#inputFile").val() == '' || $("#title").val() == '' || $("#conteudo").val() == '' ||
+            $("#disc").val() == '' || $("#prof").val() == '') {
+            $("#btnSubmit").attr('disabled', 'true')
+        } else {
+            $("#btnSubmit").removeAttr('disabled')
+        }
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 </script>
-<br />
