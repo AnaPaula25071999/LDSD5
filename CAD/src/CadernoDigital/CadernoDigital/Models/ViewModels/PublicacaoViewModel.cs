@@ -29,6 +29,12 @@ namespace CadernoDigital.Models.ViewModels
 
         public IFormFile Imagem { get; set; }
 
+        public bool Curtida { get; set; }
+
+        public ContadorModel Contador { get; set; }
+
+        public Guid UserLogado { get; set; }
+
     }
 }
 

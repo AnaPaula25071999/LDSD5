@@ -31,6 +31,9 @@
             <br />
             <h5 class="card-title">@Model.Publicacao.Titulo</h5>
             <p class="card-text">@Model.Publicacao.Conteudo</p>
+            <br />
+            <p>Comentarios: @Model.Contador.ComentarioQtd</p>
+            <p>Curtidas: @Model.Contador.CurtidaQtd</p>
             <hr />
             @if (Model.Comentarios != null && Model.Comentarios.Any())
             {
@@ -44,7 +47,12 @@
                 </div>}
             <div class="mb-2">
                 <form asp-controller="Home" asp-action="Curtida" method="post">
-                    <button type="submit" class="btn btn-primary btn-block">Curtir</button>
+                    @if (!Model.Curtida)
+                    {
+                        <button type="submit" class="btn btn-primary btn-block">Curtir</button>}
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary btn-block">Descurtir</button>}
                 </form>
             </div>
         </div>

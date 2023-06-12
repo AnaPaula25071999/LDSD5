@@ -1,5 +1,5 @@
 ﻿@model List<CadernoDigital.Models.ViewModels.PublicacaoViewModel>
-<link rel="stylesheet" href="~/css/index.css"/>
+<link rel="stylesheet" href="~/css/index.css" />
 
 @{
     ViewData["Title"] = "Publicações";
@@ -19,10 +19,12 @@
     .hidden {
         display: none;
     }
+
     .w3-theme-d2 {
         color: #fff !important;
         background-color: #6c63ff !important;
     }
+
     .w3-padding-large {
         padding: 6px 24px !important;
     }
@@ -35,17 +37,22 @@
             <!-- Left Column -->
             <div class="w3-col m3">
                 <!-- Profile -->
-                <div class="w3-card w3-round w3-white">
-                    <div class="w3-container">
-                        <h4 class="w3-center">My Profile</h4>
-                        <p class="w3-center"><img src="~/assets/imagem/my-profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                        <a asp-controller="Usuario" asp-action="Index"><button style="border-radius: 5px" type="button" class="w3-button w3-theme-d2"><i class="fa fa-pencil"></i> Meu Perfil</button></a>
-                        <hr>
-                        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Developer, TI</p>
-                        <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Guarulhos, SP</p>
-                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> 1, Abril 1988</p>
+                @foreach (var item in Model)
+                {
+                    <div class="w3-card w3-round w3-white">
+                        <div class="w3-container">
+                            <h4 class="w3-center">My Profile</h4>
+
+                            <p class="w3-center"><img src="~/assets/usuario/@item.Usuario.Foto" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                            <a asp-controller="Usuario" asp-action="Index"><button style="border-radius: 5px" type="button" class="w3-button w3-theme-d2"><i class="fa fa-pencil"></i> Meu Perfil</button></a>
+                            <hr>
+                            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Developer, TI</p>
+                            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Guarulhos, SP</p>
+                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> 1, Abril 1988</p>
+                        </div>
                     </div>
-                </div>
+                    break;
+                }
                 <br>
                 <!-- Interests -->
                 <div class="w3-card w3-round w3-white w3-hide-small">
@@ -62,8 +69,6 @@
                 <br>
 
                 <!-- Alert Box -->
-
-
                 <!-- End Left Column -->
             </div>
 
@@ -117,21 +122,30 @@
                             </h4>
 
                             <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
+                                <p>Comentarios: @publicacao.Contador.ComentarioQtd</p>
+                                <p>Curtidas: @publicacao.Contador.CurtidaQtd</p>
                                 <button style="margin-left:10px; border-radius: 5px" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                                <a data-bs-toggle="modal" data-bs-target="#@publicacao.Publicacao.Id.ToString()"><button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </a>
+                                <a data-bs-toggle="modal" data-bs-target="#@publicacao.Publicacao.Id.ToString()">
+                                    <button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+                                </a>
                             </div>
+
+                            @if (publicacao.Publicacao.Video != null)
+                            {
+                                <div class="w3-row-padding" style="margin:0 -16px">
+                                    <div class="w3-center">
+                                        <iframe width="420" height="345" src="@publicacao.Publicacao.Video">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            }
+
                         </div>
                     }
                 }
                 <!--Até aqui-->
-                else
-                {
-                    <tr class="odd"><td valign="top" colspan="5">Nenhuma publicação encontrada</td></tr>
-                }
-                
             </div>
             <!-- End Middle Column -->
-
             <!-- Right Column -->
             <div class="w3-col m2">
                 <div class="w3-card w3-round w3-white w3-center">

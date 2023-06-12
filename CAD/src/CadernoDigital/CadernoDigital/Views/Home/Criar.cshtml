@@ -62,15 +62,18 @@
 
         <div class="mb-3 form-group">
             <label for="imagem" class="form-label">Faça upload da imagem. <span id="labelMaxSize">Tamanho Max: 10MB </span></label>
-            <input id="inputFile" type="file" accept=".jpeg,.jpg,.png,.mp4" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
+            <input id="inputFile" type="file" accept=".jpeg,.jpg,.png" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
             @Html.ValidationMessageFor(x => x.Imagem)
         </div>
 
+        <div class="mb-3 form-group">
+            <label for="video" class="form-label">Link do Vídeo</label>
+            <input id="video" type="text" asp-for="Publicacao.Video" class="form-control" placeholder="Cole o link do vídeo">
+            @Html.ValidationMessageFor(x => x.Publicacao.Conteudo)
+        </div>
 
         <button id="btnSubmit" type="submit" disabled class="btn btn-primary btn-block">Adicionar</button>
         <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
-       
-  
 
     </form>
    

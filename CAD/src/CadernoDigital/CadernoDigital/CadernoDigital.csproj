@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\assets\usuario\" />
     <Folder Include="wwwroot\assets\video\" />
   </ItemGroup>
 

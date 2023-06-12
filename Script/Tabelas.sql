@@ -95,12 +95,12 @@ ALTER TABLE DisciplinaProfessor ADD
 FOREIGN KEY (Id_Disciplina) REFERENCES Disciplina(Id),
 FOREIGN KEY (Id_Professor) REFERENCES Professor(Id)
 
-INSERT INTO Usuario VALUES (default,'adm','adm@adm.com','adm', 0,'202CB962AC59075B964B07152D234B70', NULL, NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
-INSERT INTO Usuario VALUES (default,'GU3017141','everton.r@aluno.ifsp.edu.br','Everton Santos', 0,'C99868052FB8A76E4F4B9F2EE67D39FB', NULL, NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
-INSERT INTO Usuario VALUES (default,'GU3018067','aparecida.amanda@aluno.ifsp.edu.br','Amanda Souza ', 0,'6209804952225AB3D14348307B5A4A27', NULL, NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
-INSERT INTO Usuario VALUES (default,'GU3015131','anapaula@aluno.ifsp.edu.br','Ana Paula Castro', 0,'276B6C4692E78D4799C12ADA515BC3E4', NULL, NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
-INSERT INTO Usuario VALUES (default,'GU3015084','cordeiro.gabriela@aluno.ifsp.edu.br','Gabriela Cordeiro', 0,'276E697E74E8B5264465139A480DB556', NULL, NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
-INSERT INTO Usuario VALUES (default,'GU3025829','lucask@aluno.ifsp.edu.br','Lucas ALENCAR', 0,'DC53FC4F621C80BDC2FA0329A6123708', NULL, NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
+INSERT INTO Usuario VALUES (default,'adm','adm@adm.com','adm', 0,'202CB962AC59075B964B07152D234B70', 'adm.jpg', NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
+INSERT INTO Usuario VALUES (default,'GU3017141','everton.r@aluno.ifsp.edu.br','Everton Santos', 0,'C99868052FB8A76E4F4B9F2EE67D39FB', 'GU3017141.jpg', NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
+INSERT INTO Usuario VALUES (default,'GU3018067','aparecida.amanda@aluno.ifsp.edu.br','Amanda Souza ', 0,'6209804952225AB3D14348307B5A4A27', 'GU3018067.jpg', NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
+INSERT INTO Usuario VALUES (default,'GU3015131','anapaula@aluno.ifsp.edu.br','Ana Paula Castro', 0,'276B6C4692E78D4799C12ADA515BC3E4', 'GU3015131.jpg', NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
+INSERT INTO Usuario VALUES (default,'GU3015084','cordeiro.gabriela@aluno.ifsp.edu.br','Gabriela Cordeiro', 0,'276E697E74E8B5264465139A480DB556', 'GU3015084.jpg', NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
+INSERT INTO Usuario VALUES (default,'GU3025829','lucask@aluno.ifsp.edu.br','Lucas ALENCAR', 0,'DC53FC4F621C80BDC2FA0329A6123708', 'GU3025829.jpg', NULL, NULL, NULL, 'ADS - Análise e Desenvolvimento de Sistems', GETDATE(), GETDATE())
 
 
 INSERT INTO Disciplina VALUES ('284D018C-5098-4FBE-9813-F3F4B53B320E','GNE - Gestão de Negócios', GETDATE(), GETDATE())

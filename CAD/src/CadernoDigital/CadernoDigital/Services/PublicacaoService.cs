@@ -37,15 +37,20 @@ namespace CadernoDigital.Services
                 var dis = _context.Disciplina.FirstOrDefault(x => x.Id == result.Id_Disciplina);
                 var pro = _context.Professor.FirstOrDefault(x => x.Id == result.Id_Professor);
                 var coment = BuscarComentarios(pub[i].Id);
+                var cont = Contador(pub[i].Id);
 
                 publicacao.Add(new PublicacaoViewModel()
                 {
                     Publicacao = pub[i],
                     Disciplina = dis,
                     Professor = pro,
-                    Comentarios = coment
+                    Comentarios = coment,
+                    Contador = cont
                 });
             };
+
+            var idUser = _sessao.BuscarSessaoDoUsuario().Id;
+            publicacao[0].Usuario = _context.Usuario.FirstOrDefault(x => x.Id.ToString() == idUser.ToString());
 
             return publicacao;
         }
@@ -87,6 +92,8 @@ namespace CadernoDigital.Services
             publicacao.Professor = BuscarProfessorPorID(result.Id_Professor);
             publicacao.Disciplina = BuscarDisciplinaPorID(result.Id_Disciplina);
             publicacao.Comentarios = BuscarComentarios(id);
+            publicacao.Curtida = BuscarCurtida(id);
+            publicacao.Contador = Contador(id);
             return publicacao;
         }
 
@@ -158,7 +165,7 @@ namespace CadernoDigital.Services
 
         public void AtualizaCurtida(Guid publicacao)
         {
-            
+
             var usuario = _sessao.BuscarSessaoDoUsuario().Id;
             var result = _context.Curtida.Where(x => x.Id_Usuario == usuario && x.Id_Publicacao == publicacao).SingleOrDefault();
 
@@ -181,6 +188,30 @@ namespace CadernoDigital.Services
 
         }
 
+        public bool BuscarCurtida(Guid publicacao)
+        {
+            var usuario = _sessao.BuscarSessaoDoUsuario().Id;
+            var result = _context.Curtida.Where(x => x.Id_Usuario == usuario && x.Id_Publicacao == publicacao).SingleOrDefault();
+
+            if (result == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public ContadorModel Contador(Guid id)
+        {
+            ContadorModel result = new ContadorModel();
+            result.CurtidaQtd = _context.Curtida.Count(x => x.Id_Publicacao == id);
+            result.ComentarioQtd = _context.Comentario.Count(x => x.Id_Publicacao == id);
+
+            return result;
+        }
 
 
         public string TratarUpload(PublicacaoViewModel pub)
