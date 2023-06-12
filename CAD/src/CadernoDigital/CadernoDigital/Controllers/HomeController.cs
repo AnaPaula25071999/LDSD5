@@ -6,11 +6,12 @@ using ControleDeContatos.Helper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 
 namespace CadernoDigital.Controllers
 {
@@ -19,14 +20,16 @@ namespace CadernoDigital.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ISessao _sessao;
         private readonly IPublicacaoService _publicacaoService;
+        private readonly IMemoryCache _memoryCache;
         private string _caminhoImagem;
 
         public HomeController(ILogger<HomeController> logger, ISessao sessao, IPublicacaoService publicacaoService,
-            IWebHostEnvironment caminhoImagem)
+            IMemoryCache memoryCache, IWebHostEnvironment caminhoImagem)
         {
             _logger = logger;
             _sessao = sessao;
             _publicacaoService = publicacaoService;
+            _memoryCache = memoryCache;
             _caminhoImagem = caminhoImagem.WebRootPath;
         }
 
@@ -60,6 +63,13 @@ namespace CadernoDigital.Controllers
             return View(contato);
         }
 
+        public IActionResult Comentar(Guid id)
+        {
+            PublicacaoViewModel Comentario = _publicacaoService.ComentarioPorId(id);
+            SetCache(id);
+            return View(Comentario);
+        }
+
         [HttpPost]
         public IActionResult Publicar(PublicacaoViewModel pub)
         {
@@ -68,24 +78,13 @@ namespace CadernoDigital.Controllers
                 return RedirectToAction("Index", "Login");
             }
 
+            pub.Publicacao.Id_Disciplina_Professor = _publicacaoService.BuscarIdDisciplinaProfessor(pub.DisciplinaProfessor.Id_Disciplina, pub.DisciplinaProfessor.Id_Professor);
+
             try
             {
                 if (ModelState.IsValid)
                 {
-
-                    _caminhoImagem += "\\assets\\imagem\\";
-                    string nomeImagem = DateTime.Now.ToString("dd-MM-yyyyTHH-mm-ss") + "_" + pub.Imagem.FileName.ToString();
-                    if (!Directory.Exists(_caminhoImagem))
-                    {
-                        Directory.CreateDirectory(_caminhoImagem);
-                    }
-                    using (var strem = System.IO.File.Create(
-                        _caminhoImagem + nomeImagem))
-                    {
-                        pub.Imagem.CopyToAsync(strem);
-                    }
-                    
-                    pub.Publicacao.Imagem = nomeImagem;
+                    pub.Publicacao.Imagem = _publicacaoService.TratarUpload(pub);
                     pub.Publicacao = _publicacaoService.Adicionar(pub.Publicacao);
 
                     TempData["MensagemSucesso"] = "Sucesso na publicação!";
@@ -125,6 +124,44 @@ namespace CadernoDigital.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos atualizar a publicação, tente novamante, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+        [HttpPost]
+        public IActionResult Comentar(string id, string coment)
+        {
+            if (_sessao.BuscarSessaoDoUsuario() == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            try
+            {
+                var result = _publicacaoService.Comentar(id, coment);
+
+                TempData["MensagemSucesso"] = "Sucesso na publicação!";
+
+                return Comentar(Guid.Parse(id));
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos realizar sua publicação, tente novamante, detalhe do erro: {ex.Message}";
+                return RedirectToAction("Comentar");
+            }
+        }
+        
+        [HttpPost]
+        public IActionResult Curtida()
+        {
+            var publicacao = Guid.Parse(_memoryCache.Get("Publicacao").ToString());
+            _publicacaoService.AtualizaCurtida(publicacao);
+
+            return RedirectToAction("Comentar", new { id = publicacao });
+        }
+
+        public void SetCache(Guid id)
+        {
+            _memoryCache.Set("Publicacao", id);
+
         }
 
         public IActionResult GerarSenha()
