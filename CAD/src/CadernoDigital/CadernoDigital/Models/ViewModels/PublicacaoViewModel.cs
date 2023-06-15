@@ -33,6 +33,8 @@ namespace CadernoDigital.Models.ViewModels
 
         public ContadorModel Contador { get; set; }
 
+        public RankingModel Ranking { get; set; }
+
         public Guid UserLogado { get; set; }
 
     }

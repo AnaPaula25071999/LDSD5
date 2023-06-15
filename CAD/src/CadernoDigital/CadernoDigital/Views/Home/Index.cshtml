@@ -91,6 +91,10 @@
                 {
                     foreach (var publicacao in Model)
                     {
+                        @if (publicacao.Publicacao == null)
+                        {
+                            break;
+                        }
                         <div class="w3-container w3-card w3-white w3-round w3-margin">
                             <div>
                                 <div class="d-flex justify-content-between">
@@ -150,14 +154,37 @@
             <div class="w3-col m2">
                 <div class="w3-card w3-round w3-white w3-center">
                     <div class="w3-container">
-                        <span class="heading">User Rating</span>
+                        <span class="heading">Ranking</span>
                         <br />
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <p>4.1 average based on 254 reviews.</p>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Nome</th>
+                                    <th>Pontuação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var i = 1;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@item.Ranking.Nome</td>
+                                        <td>@item.Ranking.Pontuacao</td>
+                                    </tr>
+                                    if (true) { i++; }
+                                }
+                            </tbody>
+                        </table>
+                        @*<span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <p>4.1 average based on 254 reviews.</p>*@
                         <hr style="border:3px solid #f1f1f1">
                     </div>
                 </div>
@@ -186,6 +213,10 @@
         {
             foreach (var publucacao in Model)
             {
+                @if (publucacao.Publicacao == null)
+                {
+                    break;
+                }
                 <div class="card">
 
                     @*Comentario*@

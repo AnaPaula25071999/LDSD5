@@ -52,6 +52,24 @@ namespace CadernoDigital.Services
             var idUser = _sessao.BuscarSessaoDoUsuario().Id;
             publicacao[0].Usuario = _context.Usuario.FirstOrDefault(x => x.Id.ToString() == idUser.ToString());
 
+            var rank = Ranking();
+            for (int i = 0; i < rank.Count(); i++)
+            {
+                var itensCriados = publicacao.Count();
+                if (i < itensCriados)
+                {
+                    publicacao[i].Ranking = rank[i];
+                }
+                else
+                {
+                    publicacao.Add(new PublicacaoViewModel()
+                    {
+                        Ranking = rank[i]
+                    });
+                }
+
+            }
+
             return publicacao;
         }
 
@@ -209,6 +227,28 @@ namespace CadernoDigital.Services
             ContadorModel result = new ContadorModel();
             result.CurtidaQtd = _context.Curtida.Count(x => x.Id_Publicacao == id);
             result.ComentarioQtd = _context.Comentario.Count(x => x.Id_Publicacao == id);
+
+            return result;
+        }
+
+        public List<RankingModel> Ranking()
+        {
+            var users = _context.Usuario.ToList();
+
+            List<RankingModel> ranking = new List<RankingModel>();
+
+            for (var i = 0; i < users.Count(); i++)
+            {
+                var pub = _context.Publicacao.Where(x => x.Id_Usuario == users[i].Id).ToList();
+                ranking.Add(new RankingModel(users[i].Nome.ToString(), users[i].Matricula.ToString()));
+                for (var j = 0; j < pub.Count(); j++)
+                {
+                    var cont = Contador(pub[j].Id);
+                    ranking[i].Pontuacao += cont.ComentarioQtd + cont.ComentarioQtd;
+                }
+            }
+
+            List<RankingModel> result = ranking.OrderByDescending(x => x.Pontuacao).ToList();
 
             return result;
         }
