@@ -1,4 +1,9 @@
 ﻿<!DOCTYPE html>
+
+@{
+    var yaireo = "@yaireo";
+}
+
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -17,6 +22,11 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="~/js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.8/tagify.css" integrity="sha512-Ft73YZFLhxI8baaoTdSPN8jKRPhYu441A8pqlqf/CvGkUOaLCLm59ZWMdls8lMBPjs1OZ31Vt3cmZsdBa3EnMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.8/jQuery.tagify.min.js" integrity="sha512-jmUv+Dfs7aL/peiSLnRN02oY/IR0vBky5GG3SBr9CFixp3XGEAZhfhqU5owH4im1gPEIs6q9rTxiDMBcfRkZfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 
     <style>
         html, body, h1, h2, h3, h4, h5 {
@@ -65,7 +75,7 @@
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
 
 
-                <a asp-action="Index" asp-controller="Home" class="navbar-brand w3-bar-item w3-button w3-padding-large w3-theme-d2"><img class="w3-margin-right" src="/assets/imagem/logotipo.png"  width="155" height="50"></a>
+                <a asp-action="Index" asp-controller="Home" class="navbar-brand w3-bar-item w3-padding-large w3-theme-d2"><img class="w3-margin-right" src="/assets/imagem/logotipo.png"  width="155" height="50"></a>
 
                 @*<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
                 <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
