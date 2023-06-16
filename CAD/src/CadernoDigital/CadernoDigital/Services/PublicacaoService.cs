@@ -244,7 +244,7 @@ namespace CadernoDigital.Services
                 for (var j = 0; j < pub.Count(); j++)
                 {
                     var cont = Contador(pub[j].Id);
-                    ranking[i].Pontuacao += cont.ComentarioQtd + cont.ComentarioQtd;
+                    ranking[i].Pontuacao += cont.ComentarioQtd + cont.CurtidaQtd;
                 }
             }
 
