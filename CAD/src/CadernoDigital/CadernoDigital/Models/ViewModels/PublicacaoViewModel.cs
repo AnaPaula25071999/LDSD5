@@ -35,6 +35,10 @@ namespace CadernoDigital.Models.ViewModels
 
         public RankingModel Ranking { get; set; }
 
+        public PreferenciaModel Preferencia { get; set; }
+
+        public TagModel Tags { get; set; }
+
         public Guid UserLogado { get; set; }
 
     }

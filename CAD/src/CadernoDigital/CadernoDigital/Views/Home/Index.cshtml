@@ -57,12 +57,14 @@
                 <!-- Interests -->
                 <div class="w3-card w3-round w3-white w3-hide-small">
                     <div class="w3-container">
-                        <p>Interests</p>
+                        <p>Preferências</p>
+                        <a asp-controller="Preferencia" asp-action="Index" style="border-radius: 100%;" class="w3-button w3-theme-d2 mb-3"><i class="fa fa-pencil"></i></a>
                         <p>
-                            <span class="w3-tag w3-small w3-theme-d2">C#</span>
-                            <span class="w3-tag w3-small w3-theme-d2">Java</span>
-                            <span class="w3-tag w3-small w3-theme-d2">Django</span>
-                            <span class="w3-tag w3-small w3-theme-d2">Python</span>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Tags == null){ break; }
+                                <span class="w3-tag w3-small w3-theme-d2">@item.Tags.Nome</span>
+                            }
                         </p>
                     </div>
                 </div>

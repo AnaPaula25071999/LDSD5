@@ -42,6 +42,7 @@ namespace CadernoDigital
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IPublicacaoService, PublicacaoService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IPreferenciaService, PreferenciaService>();
 
             services.AddSession(o =>
             {

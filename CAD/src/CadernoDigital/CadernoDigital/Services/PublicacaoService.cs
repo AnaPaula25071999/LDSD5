@@ -17,12 +17,15 @@ namespace CadernoDigital.Services
         private readonly Context _context;
         private readonly ISessao _sessao;
         private string _caminhoImagem;
+        private IPreferenciaService _preferencia;
 
-        public PublicacaoService(Context context, ISessao sessao, IWebHostEnvironment caminhoImagem)
+        public PublicacaoService(Context context, ISessao sessao, IWebHostEnvironment caminhoImagem,
+            IPreferenciaService preferencia)
         {
             _context = context;
             _sessao = sessao;
             _caminhoImagem = caminhoImagem.WebRootPath;
+            _preferencia = preferencia;
         }
         public List<PublicacaoViewModel> BucarTodos()
         {
@@ -49,25 +52,23 @@ namespace CadernoDigital.Services
                 });
             };
 
-            var idUser = _sessao.BuscarSessaoDoUsuario().Id;
-            publicacao[0].Usuario = _context.Usuario.FirstOrDefault(x => x.Id.ToString() == idUser.ToString());
-
-            var rank = Ranking();
-            for (int i = 0; i < rank.Count(); i++)
+            if (publicacao.Count() != 0)
             {
-                var itensCriados = publicacao.Count();
-                if (i < itensCriados)
+                var tag = PreferenciaParaTag();
+                for (int i = 0; i < tag.Count; i++)
                 {
-                    publicacao[i].Ranking = rank[i];
+                    if (i < publicacao.Count()) { publicacao[i].Tags = tag[i]; }
+                    else {publicacao.Add(new PublicacaoViewModel(){Tags = tag[i]}); }
                 }
-                else
+                
+                var idUser = _sessao.BuscarSessaoDoUsuario().Id;
+                publicacao[0].Usuario = _context.Usuario.FirstOrDefault(x => x.Id.ToString() == idUser.ToString());
+                var rank = Ranking();
+                for (int i = 0; i < rank.Count(); i++)
                 {
-                    publicacao.Add(new PublicacaoViewModel()
-                    {
-                        Ranking = rank[i]
-                    });
+                    if (i < publicacao.Count()){publicacao[i].Ranking = rank[i]; }
+                    else {publicacao.Add(new PublicacaoViewModel(){Ranking = rank[i]}); }
                 }
-
             }
 
             return publicacao;
@@ -253,6 +254,13 @@ namespace CadernoDigital.Services
             return result;
         }
 
+        public List<TagModel> PreferenciaParaTag()
+        {
+            var preferencia = _preferencia.BuscarPorIdUser();
+            var tag = _preferencia.BuscarTagPorPreferencia(preferencia);
+
+            return tag;
+        }
 
         public string TratarUpload(PublicacaoViewModel pub)
         {

@@ -1,0 +1,131 @@
+﻿@model CadernoDigital.Models.ViewModels.PreferenciaTagViewModel
+@{
+    ViewData["Title"] = "Escolher Preferência";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<style>
+    .w3-theme-d2 {
+        color: #fff !important;
+        background-color: #6c63ff !important;
+    }
+
+    .w3-padding-large {
+        padding: 6px 24px !important;
+    }
+
+    .w3-theme-d5 {
+        color: #fff !important;
+        background-color: #4a44b3 !important;
+    }
+
+    .w3-theme-d3 {
+        color: #fff !important;
+        background-color: #6c63ff !important;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Escolher Preferência</h1>
+</div>
+
+<div class="mb-5">
+    <form asp-controller="Preferencia" asp-action="Salvar" method="post">
+
+        <h4>Escolha até 5 Preferência, para classificar as publicações</h4>
+
+        <div class="mb-3 form-group">
+            <label for="preferencia1" class="form-label">Escolha 1</label>
+            <select id="preferencia1" type="text" asp-for="Preferencia.Preferencia1" asp-items="@(new SelectList(Model.Tags,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+            @Html.ValidationMessageFor(x => x.Preferencia.Preferencia1)
+        </div>
+        <div class="mb-3 form-group">
+            <label for="preferencia2" class="form-label">Escolha 2</label>
+            <select id="preferencia2" type="text" asp-for="Preferencia.Preferencia2" asp-items="@(new SelectList(Model.Tags,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+            @Html.ValidationMessageFor(x => x.Preferencia.Preferencia2)
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="preferencia3" class="form-label">Escolha 3</label>
+            <select id="preferencia3" type="text" asp-for="Preferencia.Preferencia3" asp-items="@(new SelectList(Model.Tags,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+            @Html.ValidationMessageFor(x => x.Preferencia.Preferencia3)
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="preferencia4" class="form-label">Escolha 4</label>
+            <select id="preferencia4" type="text" asp-for="Preferencia.Preferencia4" asp-items="@(new SelectList(Model.Tags,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+            @Html.ValidationMessageFor(x => x.Preferencia.Preferencia4)
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="preferencia5" class="form-label">Escolha 5</label>
+            <select id="preferencia5" type="text" asp-for="Preferencia.Preferencia5" asp-items="@(new SelectList(Model.Tags,"Id","Nome"))" class="form-control"><option value="">Escolha...</option></select>
+            @Html.ValidationMessageFor(x => x.Preferencia.Preferencia5)
+        </div>
+
+        <button id="btnSubmit" type="submit" class="btn btn-primary btn-block">Salvar</button>
+        <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
+
+    </form>
+
+
+</div>
+<script>
+    ////////////////////////////////////////////////////////////////////////
+
+    $("#title, #conteudo").on("keyup", function () {
+        if ($(this).val() == '') {
+            $(this).siblings('label').css('color', 'red')
+        } else {
+            $(this).siblings('label').css('color', 'green')
+        }
+        authenticate();
+    });
+
+    $("#disc, #prof").change(function () {
+        if ($(this).val() == '') {
+            $(this).siblings('label').css('color', 'red')
+        } else {
+            $(this).siblings('label').css('color', 'green')
+        }
+        authenticate();
+    })
+
+    $("#inputFile").change(function () {
+        if (($("#inputFile")[0].files[0].size / 1024 / 1024) > 30) {
+            $(this).siblings('label').children().css('color', 'red')
+        } else {
+            $(this).siblings('label').children().css('color', 'green')
+        }
+        authenticate();
+    })
+
+
+
+    ////////////////////////////////////////////////////////////////////////
+
+
+    function authenticate() {
+        if ($("#inputFile").val() == '' || $("#title").val() == '' || $("#conteudo").val() == '' ||
+            $("#disc").val() == '' || $("#prof").val() == '') {
+            $("#btnSubmit").attr('disabled', 'true')
+        } else {
+            $("#btnSubmit").removeAttr('disabled')
+        }
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+</script>

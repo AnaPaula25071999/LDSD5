@@ -20,6 +20,8 @@ namespace CadernoDigital.Data
         public DbSet<ComentarioModel> Comentario { get; set; }
         public DbSet<CurtidaModel> Curtida { get; set; }
         public DbSet<DisciplinaProfessorModel> DisciplinaProfessor { get; set; }
+        public DbSet<PreferenciaModel> Preferencia { get; set; }
+        public DbSet<TagModel> Tag { get; set; }
 
     }
 }
