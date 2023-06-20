@@ -41,6 +41,8 @@ namespace CadernoDigital.Models.ViewModels
 
         public Guid UserLogado { get; set; }
 
+        public ICollection<TagModel> Tag { get; set; }
+
     }
 }
 

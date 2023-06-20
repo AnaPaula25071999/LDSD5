@@ -22,6 +22,8 @@ namespace CadernoDigital.Models
 
         public Guid Id_Disciplina_Professor { get; set; }
 
+        public int? Preferencia { get; set; }
+
 
     }
 }

@@ -61,6 +61,12 @@
         </div>
 
         <div class="mb-3 form-group">
+            <label for="pref" class="form-label">Classificação de Preferência</label>
+            <select id="pref" type="text" asp-for="Publicacao.Preferencia" asp-items="@(new SelectList(Model.Tag,"Id","Nome"))" class="form-control"><option value="">Escolha..</option></select>
+            @Html.ValidationMessageFor(x => x.Publicacao.Preferencia)
+        </div>
+
+        <div class="mb-3 form-group">
             <label for="imagem" class="form-label">Faça upload da imagem. <span id="labelMaxSize">Tamanho Max: 10MB </span></label>
             <input id="inputFile" type="file" accept=".jpeg,.jpg,.png" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
             @Html.ValidationMessageFor(x => x.Imagem)

@@ -58,18 +58,31 @@ namespace CadernoDigital.Services
                 for (int i = 0; i < tag.Count; i++)
                 {
                     if (i < publicacao.Count()) { publicacao[i].Tags = tag[i]; }
-                    else {publicacao.Add(new PublicacaoViewModel(){Tags = tag[i]}); }
+                    else { publicacao.Add(new PublicacaoViewModel() { Tags = tag[i] }); }
                 }
-                
+
                 var idUser = _sessao.BuscarSessaoDoUsuario().Id;
                 publicacao[0].Usuario = _context.Usuario.FirstOrDefault(x => x.Id.ToString() == idUser.ToString());
                 var rank = Ranking();
                 for (int i = 0; i < rank.Count(); i++)
                 {
-                    if (i < publicacao.Count()){publicacao[i].Ranking = rank[i]; }
-                    else {publicacao.Add(new PublicacaoViewModel(){Ranking = rank[i]}); }
+                    if (i < publicacao.Count()) { publicacao[i].Ranking = rank[i]; }
+                    else { publicacao.Add(new PublicacaoViewModel() { Ranking = rank[i] }); }
                 }
             }
+
+            var pref = _preferencia.BuscarPorIdUser();
+
+            if (pref.Preferencia5 != null)
+            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia5); }
+            if (pref.Preferencia4 != null)
+            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia4); }
+            if (pref.Preferencia3 != null)
+            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia3); }
+            if (pref.Preferencia2 != null)
+            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia2); }
+            if (pref.Preferencia1 != null)
+            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia1); }
 
             return publicacao;
         }

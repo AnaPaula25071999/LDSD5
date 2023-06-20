@@ -20,15 +20,17 @@ namespace CadernoDigital.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ISessao _sessao;
         private readonly IPublicacaoService _publicacaoService;
+        private readonly IPreferenciaService _preferenciaService;
         private readonly IMemoryCache _memoryCache;
         private string _caminhoImagem;
 
         public HomeController(ILogger<HomeController> logger, ISessao sessao, IPublicacaoService publicacaoService,
-            IMemoryCache memoryCache, IWebHostEnvironment caminhoImagem)
+            IPreferenciaService preferenciaService, IMemoryCache memoryCache, IWebHostEnvironment caminhoImagem)
         {
             _logger = logger;
             _sessao = sessao;
             _publicacaoService = publicacaoService;
+            _preferenciaService = preferenciaService;
             _memoryCache = memoryCache;
             _caminhoImagem = caminhoImagem.WebRootPath;
         }
@@ -53,7 +55,8 @@ namespace CadernoDigital.Controllers
             }
             var disciplinas = _publicacaoService.BuscarDisciplinas();
             var professores = _publicacaoService.BuscarProfessores();
-            var viewModel = new PublicacaoViewModel { Disciplinas = disciplinas, Professores = professores };
+            var tag = _preferenciaService.BuscarPorTags();
+            var viewModel = new PublicacaoViewModel { Disciplinas = disciplinas, Professores = professores, Tag = tag };
             return View(viewModel);
         }
 
