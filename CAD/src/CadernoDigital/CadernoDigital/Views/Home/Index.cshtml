@@ -82,7 +82,6 @@
                         <div class="w3-card w3-round w3-white">
                             <div class="w3-container w3-padding">
                                 <h6 class="w3-opacity">Escreva o que está pensando...</h6>
-                                <input style="width: 80%; margin-bottom: 5px" type="text" class="w3-border w3-padding" placeholder="Ex.: Fiz um projeto em ASP.NET">
                                 <a asp-controller="Home" asp-action="Criar"><button style="border-radius: 5px" type="button" class="w3-button w3-theme-d2"><i class="fa fa-pencil"></i> Nova Publicação</button></a>
                             </div>
                         </div>
@@ -128,11 +127,12 @@
                             </h4>
 
                             <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
-                                <p>Comentarios: @publicacao.Contador.ComentarioQtd</p>
-                                <p>Curtidas: @publicacao.Contador.CurtidaQtd</p>
-                                <button style="margin-left:10px; border-radius: 5px" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                                <a data-bs-toggle="modal" data-bs-target="#@publicacao.Publicacao.Id.ToString()">
-                                    <button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+                                <div style="margin-bottom: 15px">
+                                    <span style="margin-right: 42px"><i class="fa fa-comment"></i> @publicacao.Contador.ComentarioQtd</span>
+                                    <span><i class="fa fa-thumbs-up"></i> @publicacao.Contador.CurtidaQtd</span>
+                                </div>
+                                <a style="margin-top:10px" asp-action="Comentar" asp-route-id="@publicacao.Publicacao.Id">
+                                    <button style="border-radius: 5px;" type="button" class="w3-button w3-theme-d2 w3-margin-bottom">Interagir!</button>
                                 </a>
                             </div>
 
@@ -172,11 +172,15 @@
                                 }
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>@i</td>
-                                        <td>@item.Ranking.Nome</td>
-                                        <td>@item.Ranking.Pontuacao</td>
-                                    </tr>
+                                    if (item.Ranking != null)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.Ranking.Nome</td>
+                                            <td>@item.Ranking.Pontuacao</td>
+                                        </tr>
+                                    }
+                                    
                                     if (true) { i++; }
                                 }
                             </tbody>

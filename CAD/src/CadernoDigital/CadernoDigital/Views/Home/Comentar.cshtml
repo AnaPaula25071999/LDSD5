@@ -1,60 +1,192 @@
 ﻿@model CadernoDigital.Models.ViewModels.PublicacaoViewModel
+<link rel="stylesheet" href="~/css/index.css" />
 @{
     ViewData["Title"] = "Comentar Publicação";
 }
 
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .w3-theme-d2 {
+        color: #fff !important;
+        background-color: #6c63ff !important;
+    }
+
+    .w3-padding-large {
+        padding: 6px 24px !important;
+    }
+
+    .s-coments{
+        color: darkgray;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .s-coments:hover{
+        color:dimgray;
+    }
+</style>
 <div class="text-center">
-    <h1 class="display-4">Comentar Publicação</h1>
-</div>
+    <!-- Page Container -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
+        <div class="w3-row d-flex justify-content-center">
+            <!-- Middle Column -->
+            <div class="w3-col m7">
+                <div class="w3-container w3-card w3-white w3-round w3-margin">
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <h4 style="position: relative; top: 11px;">
+                                @Model.Publicacao.Titulo
+                            </h4>
+                            <span style="margin-top: 20px" class="w3-right w3-opacity">@Model.Publicacao.DataCadastro</span>
 
+                        </div>
+                        @if (@Model.Publicacao.Conteudo != null)
+                        {
+                            <span class="showMore" style="color:gray; font-size:10px; cursor: pointer">Show More</span>
+                            <p class="pHidden hidden">@Model.Publicacao.Conteudo</p>
+                        }
 
-<form asp-controller="Home" asp-action="Comentar" method="post">
-    <div class="row">
-        <input style="opacity:0%;" type="text" name="name" value="@Model.Publicacao.Id.ToString()" disabled />
-        <div class="col-10"><textarea name="coment" id="coment" placeholder="Adicione um comentário..."></textarea></div>
-    </div>
+                    </div>
+                    <br>
+                    <div class="w3-row-padding" style="margin:0 -16px">
+                        <div class="w3-center">
+                            @if (Model.Publicacao.Video != null)
+                            {
+                                <div class="w3-row-padding" style="margin:0 -16px">
+                                    <div class="w3-center">
+                                        <iframe width="420" height="345" src="@Model.Publicacao.Video">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            }
+                            <img src="~/assets/imagem/@Model.Publicacao.Imagem" class="card-img-top" alt="publicação"
+                                 style="width:100%">
+                        </div>
+                    </div>
 
-    <button type="submit" class="btn btn-primary btn-block">Comentar</button>
-    <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Home" role="button">Voltar</a>
-</form>
+                    <h4>
+                        <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Disciplina:</span> <span>@Model.Disciplina.Nome</span>
+                    </h4>
+                    <h4>
+                        <span style="margin-left:10px;" class="w3-tag w3-middle w3-theme-d5">Professor:</span> <span>@Model.Professor.Nome</span>
+                    </h4>
+                    <div class="row">
+                        <form style="margin-bottom: 20px" asp-controller="Home" asp-action="Comentar" method="post">
+                            <div class="col-12">
+                                <div style="margin-bottom: 20px" class="row">
+                                    <input style="opacity:0%;" type="text" name="name" value="@Model.Publicacao.Id.ToString()" disabled />
+                                    <div><textarea style="width: 100%" name="coment" id="coment" placeholder="Adicione um comentário..."></textarea></div>
+                                </div>
+                            </div>
+                            
+                        <div class="row">
+                                <div style="display: inline;" class="col-6 justify-content-end d-flex col-6">
+                                <button type="submit" class="btn btn-primary btn-block">Comentar</button>
+                            </div>
+                        </form>
 
-
-<div class="modal-body">
-    <div class="row">
-        <div class="col-6">
-            <img src="~/assets/imagem/@Model.Publicacao.Imagem" class="card-img-top" alt="publicação"
-                 style="width:50%;height:50%; align-self:center;">
-        </div>
-        <div class="col-6">
-            <h5 class="card-title">@Model.Disciplina.Nome</h5>
-            <h5 class="card-title">@Model.Professor.Nome</h5>
-            <br />
-            <h5 class="card-title">@Model.Publicacao.Titulo</h5>
-            <p class="card-text">@Model.Publicacao.Conteudo</p>
-            <br />
-            <p>Comentarios: @Model.Contador.ComentarioQtd</p>
-            <p>Curtidas: @Model.Contador.CurtidaQtd</p>
-            <hr />
-            @if (Model.Comentarios != null && Model.Comentarios.Any())
-            {
-                <div class="overflow-scroll-">
-                    @foreach (var comentario in Model.Comentarios)
+                            <div style="display: inline;" class="justify-content-start d-flex col-6">
+                                <form asp-controller="Home" asp-action="Curtida" method="post">
+                                    @if (!Model.Curtida)
+                                    {
+                                        <button style="margin-bottom: 10px; height: 100%; width: 100px" class="btn btn-primary btn-block" type="submit"><i style="color:white" class="fa fa-thumbs-up"></i></button>
+                                    }
+                                    else
+                                    {
+                                    <button class="btn btn-primary btn-block" style="margin-bottom: 10px; height: 100%; width: 100px" type="submit"><i style="color:deepskyblue" class="fa fa-thumbs-up"></i></button>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                        <row>
+                            <p>Foi curtida por @Model.Contador.CurtidaQtd usuários</p>
+                            <p>Possui @Model.Contador.ComentarioQtd comentários <a><span class="s-coments">ver todos os comentários</span></a></p>
+                        </row>
+                    </div>
+                    @if (Model.Comentarios != null && Model.Comentarios.Any())
                     {
-                        <div class="card">
-                            <h5 class="card-title">@comentario.Usuario</h5>
-                            <p class="card-text">@comentario.Conteudo</p>
-                        </div>}
-                </div>}
-            <div class="mb-2">
-                <form asp-controller="Home" asp-action="Curtida" method="post">
-                    @if (!Model.Curtida)
-                    {
-                        <button type="submit" class="btn btn-primary btn-block">Curtir</button>}
-                    else
-                    {
-                        <button type="submit" class="btn btn-primary btn-block">Descurtir</button>}
-                </form>
+                        <div class="hidden" id="coments-container">
+                            @foreach (var comentario in Model.Comentarios)
+                            {
+                                <div class="card">
+                                    <h5 class="card-title">@comentario.Usuario</h5>
+                                    <p class="card-text">@comentario.Conteudo</p>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    <hr class="w3-clear">
+
+
+                    <div class="w3-row-padding w3-center" style="margin:0; padding-bottom: 5px;">
+                        <div style="margin-bottom: 15px">
+                        </div>
+                    </div>
+
+                </div>
+                <!--Até aqui-->
             </div>
+            <!-- End Middle Column
+
+                <!-- End Right Column -->
         </div>
+
+        <!-- End Grid -->
     </div>
+
+    <!-- End Page Container -->
 </div>
+<br />
+
+<script>
+
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-theme-d1";
+        } else {
+            x.className = x.className.replace("w3-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-theme-d1", "");
+        }
+    }
+
+    $(".s-coments").click(()=>{
+        $("#coments-container").slideDown();
+        if (!$("#coments-container").hasClass('isShow')){
+            $("#coments-container").addClass('isShow');
+            $(".s-coments").text('ver menos')
+        }else{
+            $("#coments-container").slideUp();
+            $("#coments-container").removeClass('isShow');
+            $(".s-coments").text('ver todos os comentários')
+        }
+
+    })
+
+    $(".showMore").click(function () {
+        $(this).siblings('.pHidden').slideToggle()
+        if ($(this).hasClass('isShow')) {
+            $(this).removeClass('isShow')
+            $(this).text('Show More')
+        } else {
+            $(this).addClass('isShow')
+            $(this).text('Show Less')
+        }
+    })
+</script>
