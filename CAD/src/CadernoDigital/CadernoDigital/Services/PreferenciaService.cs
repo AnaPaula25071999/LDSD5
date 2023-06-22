@@ -44,29 +44,34 @@ namespace CadernoDigital.Services
         public List<TagModel> BuscarTagPorPreferencia(PreferenciaModel preferencia)
         {
             List<TagModel> tag = new List<TagModel>();
-            if (preferencia.Preferencia1 != null)
+            if (preferencia != null)
             {
-                var pref1 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia1);
-                tag.Add(new TagModel(pref1.Nome));
-            }
-            if (preferencia.Preferencia2 != null) { 
-                var pref2 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia2);
-                tag.Add(new TagModel(pref2.Nome));
-            }
-            if (preferencia.Preferencia3 != null) 
-            { 
-                var pref3 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia3);
-                tag.Add(new TagModel(pref3.Nome));
-            }
-            if (preferencia.Preferencia4 != null) 
-            { 
-                var pref4 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia4);
-                tag.Add(new TagModel(pref4.Nome));
-            }
-            if (preferencia.Preferencia5 != null) 
-            { 
-                var pref5 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia5);
-                tag.Add(new TagModel(pref5.Nome));
+                if (preferencia.Preferencia1 != null)
+                {
+                    var pref1 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia1);
+                    tag.Add(new TagModel(pref1.Nome));
+                }
+                if (preferencia.Preferencia2 != null)
+                {
+                    var pref2 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia2);
+                    tag.Add(new TagModel(pref2.Nome));
+                }
+                if (preferencia.Preferencia3 != null)
+                {
+                    var pref3 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia3);
+                    tag.Add(new TagModel(pref3.Nome));
+                }
+                if (preferencia.Preferencia4 != null)
+                {
+                    var pref4 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia4);
+                    tag.Add(new TagModel(pref4.Nome));
+                }
+                if (preferencia.Preferencia5 != null)
+                {
+                    var pref5 = _context.Tag.FirstOrDefault(x => x.Id == preferencia.Preferencia5);
+                    tag.Add(new TagModel(pref5.Nome));
+                }
+
             }
             return tag;
 

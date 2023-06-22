@@ -73,16 +73,19 @@ namespace CadernoDigital.Services
 
             var pref = _preferencia.BuscarPorIdUser();
 
-            if (pref.Preferencia5 != null)
-            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia5); }
-            if (pref.Preferencia4 != null)
-            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia4); }
-            if (pref.Preferencia3 != null)
-            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia3); }
-            if (pref.Preferencia2 != null)
-            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia2); }
-            if (pref.Preferencia1 != null)
-            { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia1); }
+            if (pref != null)
+            {
+                if (pref.Preferencia5 != null)
+                { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia5); }
+                if (pref.Preferencia4 != null)
+                { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia4); }
+                if (pref.Preferencia3 != null)
+                { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia3); }
+                if (pref.Preferencia2 != null)
+                { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia2); }
+                if (pref.Preferencia1 != null)
+                { publicacao.OrderBy(x => x.Publicacao.Preferencia == pref.Preferencia1); }
+            }
 
             return publicacao;
         }
