@@ -68,7 +68,7 @@
 
         <div class="mb-3 form-group">
             <label for="imagem" class="form-label">Faça upload da imagem. <span id="labelMaxSize">Tamanho Max: 10MB </span></label>
-            <input id="inputFile" type="file" accept=".jpeg,.jpg,.png" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
+            <input id="inputFile" type="file" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
             @Html.ValidationMessageFor(x => x.Imagem)
         </div>
 

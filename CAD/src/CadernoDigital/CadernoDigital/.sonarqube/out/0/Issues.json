@@ -1,0 +1,1368 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Compilador do Microsoft (R) Visual C#",
+        "version": "3.11.0.0",
+        "fileVersion": "3.11.0-4.22157.17 (55ad582d)",
+        "semanticVersion": "3.11.0",
+        "language": "pt-BR"
+      },
+      "results": [
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "Este método assíncrono não possui operadores 'await' e será executado de modo síncrono. É recomendável o uso do operador 'await' para aguardar chamadas à API desbloqueadas ou do operador 'await Task.Run(...)' para realizar um trabalho associado à CPU em um thread em segundo plano.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/ViewComponents/Menu.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 49,
+                  "endLine": 12,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/appsettings.json",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 17,
+                  "endLine": 10,
+                  "endColumn": 76
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_caminhoImagem' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 24,
+                  "endLine": 25,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_logger' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 50,
+                  "endLine": 20,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_caminhoImagem' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 24,
+                  "endLine": 25,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4136",
+          "level": "warning",
+          "message": "All 'Editar' method overloads should be adjacent.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 30,
+                  "endLine": 63,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 30,
+                  "endLine": 107,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "Non-adjacent overload"
+            }
+          }
+        },
+        {
+          "ruleId": "S4136",
+          "level": "warning",
+          "message": "All 'Comentar' method overloads should be adjacent.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 30,
+                  "endLine": 69,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 30,
+                  "endLine": 133,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "Non-adjacent overload"
+            }
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Program.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 18,
+                  "endLine": 12,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2344",
+          "level": "warning",
+          "message": "Rename this enumeration to remove the 'Enum' suffix.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Models/Enums/PerfilEnum.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 17,
+                  "endLine": 3,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1939",
+          "level": "warning",
+          "message": "'int' should not be explicitly used as the underlying type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Models/Enums/PerfilEnum.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 28,
+                  "endLine": 3,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "redundantIndex": "0"
+            }
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_preferencia' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 37,
+                  "endLine": 20,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'preferencia'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/PreferenciaController.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 21,
+                  "endLine": 49,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'publicacao'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 21,
+                  "endLine": 118,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 21,
+                  "endLine": 142,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/UsuarioService.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 14,
+                  "endLine": 46,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4790",
+          "level": "warning",
+          "message": "Make sure this weak hash algorithm is not used in a sensitive context here.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/Criptografia.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 23,
+                  "endLine": 15,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 42,
+                  "endLine": 30,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 13,
+                  "endLine": 36,
+                  "endColumn": 16
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 13,
+                  "endLine": 55,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 17,
+                  "endLine": 58,
+                  "endColumn": 20
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 21,
+                  "endLine": 60,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 21,
+                  "endLine": 61,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 17,
+                  "endLine": 67,
+                  "endColumn": 20
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 21,
+                  "endLine": 69,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 21,
+                  "endLine": 70,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 13,
+                  "endLine": 76,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 17,
+                  "endLine": 78,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 17,
+                  "endLine": 80,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 17,
+                  "endLine": 82,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 17,
+                  "endLine": 84,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 17,
+                  "endLine": 86,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+2 (incl 1 for nesting)",
+              "11": "+2 (incl 1 for nesting)",
+              "12": "+2 (incl 1 for nesting)",
+              "13": "+2 (incl 1 for nesting)",
+              "2": "+2 (incl 1 for nesting)",
+              "3": "+3 (incl 2 for nesting)",
+              "4": "+1",
+              "5": "+2 (incl 1 for nesting)",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+1",
+              "8": "+1",
+              "9": "+2 (incl 1 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S1155",
+          "level": "warning",
+          "message": "Use '.Any()' to test whether this 'IEnumerable<CadernoDigital.Models.ViewModels.PublicacaoViewModel>' is empty or not.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 28,
+                  "endLine": 55,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Use 'Count' property here instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 28,
+                  "endLine": 55,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Use 'Count' property here instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 40,
+                  "endLine": 60,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Use 'Count' property here instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 42,
+                  "endLine": 67,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Use 'Count' property here instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 40,
+                  "endLine": 69,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 14,
+                  "endLine": 53,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'pref1' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PreferenciaService.cs",
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 42,
+                  "endLine": 52,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2201",
+          "level": "warning",
+          "message": "Use the return value of method 'OrderBy'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 19,
+                  "endLine": 79,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2201",
+          "level": "warning",
+          "message": "Use the return value of method 'OrderBy'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 19,
+                  "endLine": 81,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2201",
+          "level": "warning",
+          "message": "Use the return value of method 'OrderBy'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 19,
+                  "endLine": 83,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2201",
+          "level": "warning",
+          "message": "Use the return value of method 'OrderBy'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 19,
+                  "endLine": 85,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2201",
+          "level": "warning",
+          "message": "Use the return value of method 'OrderBy'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 19,
+                  "endLine": 87,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'pref2' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PreferenciaService.cs",
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 42,
+                  "endLine": 57,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'pref3' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PreferenciaService.cs",
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 42,
+                  "endLine": 62,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'pref4' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PreferenciaService.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 42,
+                  "endLine": 67,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'pref5' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PreferenciaService.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 42,
+                  "endLine": 72,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'result' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 57,
+                  "endLine": 127,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 45,
+                  "endLine": 138,
+                  "endColumn": 105
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 175,
+                  "startColumn": 14,
+                  "endLine": 175,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'result' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 20,
+                  "endLine": 184,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'user' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 172,
+                  "startColumn": 31,
+                  "endLine": 172,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Use 'Count' property here instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 257,
+                  "startColumn": 39,
+                  "endLine": 257,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2971",
+          "level": "warning",
+          "message": "Use 'Count' property here instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/evert/Documents/Aula%20Everton/IFSP/5%C2%B0Semestre/GIOVANI/LDSD5/CAD/src/CadernoDigital/CadernoDigital/Services/PublicacaoService.cs",
+                "region": {
+                  "startLine": 261,
+                  "startColumn": 41,
+                  "endLine": 261,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS1998": {
+          "id": "CS1998",
+          "shortDescription": "O método assíncrono não possui operadores 'await' e será executado de forma síncrona",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1998)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1116": {
+          "id": "S1116",
+          "shortDescription": "Empty statements should be removed",
+          "fullDescription": "Empty statements, i.e. ;, are usually introduced by mistake, for example because:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1116",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S112": {
+          "id": "S112",
+          "shortDescription": "General exceptions should never be thrown",
+          "fullDescription": "Throwing such general exceptions as Exception, SystemException, ApplicationException, IndexOutOfRangeException, NullReferenceException, OutOfMemoryException and ExecutionEngineException prevents calling methods from handling true, system-generated exceptions differently than application-generated errors.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-112",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1155": {
+          "id": "S1155",
+          "shortDescription": "\"Any()\" should be used to test for emptiness",
+          "fullDescription": "Using .Count() to test for emptiness works, but using .Any() makes the intent clearer, and the code more readable. However, there are some cases where special attention should be paid:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1155",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1481": {
+          "id": "S1481",
+          "shortDescription": "Unused local variables should be removed",
+          "fullDescription": "If a local variable is declared but not used, it is dead code and should be removed. Doing so will improve maintainability because developers will not wonder what the variable is used for.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1854": {
+          "id": "S1854",
+          "shortDescription": "Unused assignments should be removed",
+          "fullDescription": "A dead store happens when a local variable is assigned a value that is not read by any subsequent instruction. Calculating or retrieving a value only to then overwrite it or throw it away, could indicate a serious error in the code. Even if it’s not an error, it is at best a waste of resources. Therefore all calculated values should be used.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1939": {
+          "id": "S1939",
+          "shortDescription": "Inheritance list should not be redundant",
+          "fullDescription": "An inheritance list entry is redundant if:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1939",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2201": {
+          "id": "S2201",
+          "shortDescription": "Return values from functions without side effects should not be ignored",
+          "fullDescription": "When the call to a function doesn’t have any side effects, what is the point of making the call if the results are ignored? In such case, either the function call is useless and should be dropped or the source code doesn’t behave as expected.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2201",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2259": {
+          "id": "S2259",
+          "shortDescription": "Null pointers should not be dereferenced",
+          "fullDescription": "A reference to null should never be dereferenced/accessed. Doing so will cause a NullReferenceException to be thrown. At best, such an exception will cause abrupt program termination. At worst, it could expose debugging information that would be useful to an attacker, or it could allow an attacker to bypass security measures.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2259",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2344": {
+          "id": "S2344",
+          "shortDescription": "Enumeration type names should not have \"Flags\" or \"Enum\" suffixes",
+          "fullDescription": "The information that an enumeration type is actually an enumeration or a set of flags should not be duplicated in its name.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2344",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2933": {
+          "id": "S2933",
+          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
+          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that’s not marked readonly but is only set in the constructor, it could cause confusion about the field’s intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2971": {
+          "id": "S2971",
+          "shortDescription": "\"IEnumerable\" LINQs should be simplified",
+          "fullDescription": "In the interests of readability, code that can be simplified should be simplified. To that end, there are several ways IEnumerable language integrated queries (LINQ) can be simplified",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2971",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "Cognitive Complexity is a measure of how hard the control flow of a method is to understand. Methods with high Cognitive Complexity will be difficult to maintain.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4136": {
+          "id": "S4136",
+          "shortDescription": "Method overloads should be grouped together",
+          "fullDescription": "For clarity, all overloads of the same method should be grouped together. That lets both users and maintainers quickly understand all the current available options.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4136",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4487": {
+          "id": "S4487",
+          "shortDescription": "Unread \"private\" fields should be removed",
+          "fullDescription": "Private fields only used to store values without reading them later is a case of dead store. So changing the value of such field is useless and most probably indicates a serious error in the code.",
+          "defaultLevel": "note",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4487",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay",
+              "Unnecessary"
+            ]
+          }
+        },
+        "S4790": {
+          "id": "S4790",
+          "shortDescription": "Using weak hashing algorithms is security-sensitive",
+          "fullDescription": "Cryptographic hash algorithms such as MD2, MD4, MD5, MD6, HAVAL-128, HMAC-MD5, DSA (which uses SHA-1), RIPEMD, RIPEMD-128, RIPEMD-160, HMACRIPEMD160 and SHA-1 are no longer considered secure, because it is possible to have collisions (little computational effort is enough to find two or more different inputs that produce the same hash).",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4790",
+          "properties": {
+            "category": "Critical Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
