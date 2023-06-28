@@ -34,7 +34,7 @@
 </div>
 
 <div class="mb-5">
-    <form id="video-drop" asp-controller="Home" asp-action="Publicar" method="post" enctype="multipart/form-data">
+    <form onsubmit="Checkfiles(this)" asp-controller="Home" asp-action="Publicar" method="post" enctype="multipart/form-data">
 
         <div class="mb-3 form-group">
             <label for="titulo" class="form-label">Titulo</label>
@@ -68,7 +68,7 @@
 
         <div class="mb-3 form-group">
             <label for="imagem" class="form-label">Faça upload da imagem. <span id="labelMaxSize">Tamanho Max: 10MB </span></label>
-            <input id="inputFile" type="file" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload">
+            <input id="inputFile" type="file" class="form-control" asp-for="Imagem" placeholder="Selecione a imagem para upload" multiple>
             @Html.ValidationMessageFor(x => x.Imagem)
         </div>
 
@@ -132,8 +132,18 @@
 
     ////////////////////////////////////////////////////////////////////////////
 
+    function Checkfiles() {
+        var fup = document.getElementById('inputFile');
+        var fileName = fup.value;
+        var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
 
-
+        if (ext == "jpeg" || ext == "png") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
 </script>
